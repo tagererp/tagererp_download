@@ -83,8 +83,21 @@ h1 .hl{color:var(--orange)}
 .chip{position:absolute;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 38px -18px rgba(25,20,16,.35);padding:10px 16px;display:flex;align-items:center;gap:11px;font-size:.86rem;font-weight:700;z-index:3}
 .chip small{display:block;color:var(--mut);font-weight:500;font-size:.74rem}
 .chip .ic{width:34px;height:34px;border-radius:10px;background:var(--orange-soft);color:var(--orange);display:grid;place-items:center;flex:none}
-.chip-a{bottom:34px;inset-inline-start:-14px}
-.chip-b{top:26px;inset-inline-end:-10px}
+.chip-a{bottom:64px;inset-inline-start:-14px}
+.chip-b{top:18px;inset-inline-end:-10px}
+/* ---------- hero monitor ---------- */
+.hero-visual::before{content:"";position:absolute;inset:4% -4% 12%;background:radial-gradient(closest-side,rgba(254,80,28,.20),rgba(254,80,28,0) 72%);filter:blur(12px);z-index:0;pointer-events:none}
+.monitor{position:relative;z-index:1;animation:monitorIn .85s cubic-bezier(.22,.8,.32,1) both}
+@keyframes monitorIn{from{opacity:0;transform:translateY(16px) scale(.982)}to{opacity:1;transform:none}}
+.monitor-frame{background:linear-gradient(180deg,#28221d,#171310);border-radius:20px;padding:11px 11px 0;box-shadow:0 42px 70px -34px rgba(25,20,16,.5),0 18px 30px -18px rgba(25,20,16,.35),inset 0 1px 0 rgba(255,255,255,.09)}
+.monitor-screen{border-radius:11px;overflow:hidden;aspect-ratio:16/9;background:#FBF8F4;position:relative}
+.monitor-screen::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,0) 34%);pointer-events:none}
+.monitor-screen img{width:100%;height:100%;object-fit:contain}
+.monitor-chin{height:30px;display:flex;align-items:center;justify-content:center}
+.monitor-chin i{width:7px;height:7px;border-radius:50%;background:var(--orange);box-shadow:0 0 8px rgba(254,80,28,.85);display:block}
+.monitor-neck{width:104px;height:30px;margin:0 auto;background:linear-gradient(180deg,#221d19,#14100d);clip-path:polygon(16% 0,84% 0,100% 100%,0 100%)}
+.monitor-base{width:248px;max-width:62%;height:11px;margin:0 auto;background:linear-gradient(180deg,#2b2521,#171310);border-radius:6px 6px 10px 10px;box-shadow:0 14px 22px -12px rgba(25,20,16,.5)}
+@media (max-width:640px){.monitor-frame{padding:8px 8px 0;border-radius:15px}.monitor-screen{border-radius:8px}.monitor-chin{height:24px}.monitor-neck{width:76px;height:20px}.monitor-base{height:9px}}
 /* ---------- trust strip ---------- */
 .trust{border-block:1px solid var(--line);background:#fff}
 .trust-in{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 34px;padding:22px 0}
@@ -275,9 +288,13 @@ footer p{font-size:.93rem;line-height:1.8}
       </div>
     </div>
     <div class="hero-visual reveal in">
-      <div class="shot-frame">
-        <div class="bar"><i></i><i></i><i></i><em>لوحة تحكم تاجر</em></div>
-        <img src="img/dash.jpg" alt="لوحة تحكم برنامج تاجر" width="1440" height="960" fetchpriority="high">
+      <div class="monitor">
+        <div class="monitor-frame">
+          <div class="monitor-screen"><img src="img/dash-hero.jpg" alt="لوحة تحكم برنامج تاجر" width="3840" height="2160" fetchpriority="high"></div>
+          <div class="monitor-chin"><i></i></div>
+        </div>
+        <div class="monitor-neck"></div>
+        <div class="monitor-base"></div>
       </div>
       <div class="chip chip-a"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></span><span><small>مبيعات اليوم</small><span class="num">5,380</span> ج.م</span></div>
       <div class="chip chip-b"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 100-9 6 6 0 00-11.5 1.5A4 4 0 007 19h10.5z"/></svg></span><span><small>النسخ الاحتياطي</small>محفوظ ومزامن</span></div>
