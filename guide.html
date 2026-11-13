@@ -48,6 +48,20 @@ nav.main a.guide-link{color:var(--orange-dark);font-weight:800;border:1.5px soli
 .mobile-menu a{display:block;padding:11px 4px;font-weight:600;border-bottom:1px solid var(--soft)}
 .mobile-menu a.guide-link{color:var(--orange-dark);font-weight:800}
 .mobile-menu .btn{width:100%;justify-content:center;margin-top:10px}
+.btn-ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line)}
+.btn-ghost:hover{border-color:#DCD2C6}
+/* modal (same as main site) */
+.modal{position:fixed;inset:0;z-index:400;display:none;align-items:center;justify-content:center;padding:20px}
+.modal.open{display:flex}
+.modal .bg{position:absolute;inset:0;background:rgba(15,11,8,.72);backdrop-filter:blur(4px)}
+.modal .box{position:relative;background:#fff;border-radius:20px;max-width:430px;width:100%;padding:30px;box-shadow:var(--shadow)}
+.modal h3{font-size:1.25rem;font-weight:800;margin-bottom:6px}
+.modal .sub{color:var(--mut);font-size:.94rem;margin-bottom:20px}
+.contact-row{display:flex;align-items:center;gap:13px;border:1px solid var(--line);border-radius:13px;padding:13px 16px;margin-bottom:10px;font-weight:700;transition:border-color .2s}
+.contact-row:hover{border-color:#F3C3B0}
+.contact-row small{display:block;color:var(--mut);font-weight:500;font-size:.8rem}
+.contact-row .ic{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;flex:none;color:#fff}
+.x{position:absolute;top:14px;inset-inline-end:14px;background:var(--soft);border:1px solid var(--line);width:34px;height:34px;border-radius:10px;cursor:pointer;display:grid;place-items:center;color:var(--ink)}
 /* guide hero */
 .g-hero{padding:calc(var(--head-h) + 56px) 0 46px;background:radial-gradient(900px 420px at 88% -10%,#FFE9DF 0%,rgba(255,233,223,0) 55%),var(--soft);border-bottom:1px solid var(--line)}
 .g-hero h1{font-size:clamp(2.1rem,4.6vw,3.2rem);font-weight:800;line-height:1.3}
@@ -135,6 +149,7 @@ footer a:hover{color:#fff}
 @media (max-width:1024px){
   nav.main{display:none}
   .burger{display:block}
+  .head-cta .btn-ghost{display:none}
   .head-cta .btn{padding:9px 14px;font-size:.86rem}
 }
 @media (max-width:860px){
@@ -158,10 +173,12 @@ footer a:hover{color:#fff}
       <a href="index.html#features">المميزات</a>
       <a href="index.html#modules">أقسام النظام</a>
       <a href="index.html#why">لماذا TAGER؟</a>
+      <a href="index.html#pricing">الباقات</a>
       <a href="index.html#faq">الأسئلة الشائعة</a>
       <a href="guide.html" class="guide-link">دليل TAGER</a>
     </nav>
     <div class="head-cta">
+      <button class="btn btn-ghost" data-contact>تواصل معنا</button>
       <a class="btn btn-primary" href="https://github.com/tagererp/TagerERP_download/releases/download/v1.1.0/Tager.ERP_1.1.0_x64-setup.exe">تحميل البرنامج</a>
       <button class="burger" id="burger" aria-label="القائمة"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     </div>
@@ -171,8 +188,10 @@ footer a:hover{color:#fff}
     <a href="index.html#features">المميزات</a>
     <a href="index.html#modules">أقسام النظام</a>
     <a href="index.html#why">لماذا TAGER؟</a>
+    <a href="index.html#pricing">الباقات</a>
     <a href="index.html#faq">الأسئلة الشائعة</a>
     <a href="guide.html" class="guide-link">دليل TAGER</a>
+    <button class="btn btn-ghost" data-contact>تواصل معنا</button>
     <a class="btn btn-primary" href="https://github.com/tagererp/TagerERP_download/releases/download/v1.1.0/Tager.ERP_1.1.0_x64-setup.exe">تحميل البرنامج</a>
   </div>
 </header>
@@ -216,6 +235,18 @@ footer a:hover{color:#fff}
     <p class="copy">© 2026 TAGER — جميع الحقوق محفوظة</p>
   </div>
 </footer>
+
+<div class="modal" id="contactModal" role="dialog" aria-modal="true">
+  <div class="bg" data-close></div>
+  <div class="box">
+    <button class="x" data-close aria-label="إغلاق"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+    <h3>تواصل معنا</h3>
+    <p class="sub">اختر وسيلة التواصل المناسبة — للاشتراك واستلام سيريال التفعيل أو لأي استفسار.</p>
+    <a class="contact-row" href="https://wa.me/201015040274" target="_blank" rel="noopener"><span class="ic" style="background:#25D366"><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.4 1.8 2.2 1.2 1.1 2.3 1.4 2.6 1.6.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4 0 .1 0 .7-.2 1.2z"/></svg></span><span>واتساب<small class="num">01015040274</small></span></a>
+    <a class="contact-row" href="https://www.facebook.com/TagerAccountingSoftware" target="_blank" rel="noopener"><span class="ic" style="background:#1877F2"><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7h2.4l.4-3h-2.8V9.1c0-.9.3-1.5 1.6-1.5h1.3V4.9c-.3 0-1.1-.1-2-.1-2 0-3.4 1.2-3.4 3.5V11H8.5v3H11v7h2.5z"/></svg></span><span>فيسبوك<small>TagerAccountingSoftware</small></span></a>
+    <a class="contact-row" href="mailto:erptager@gmail.com"><span class="ic" style="background:#EA4335"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><span>البريد الإلكتروني<small>erptager@gmail.com</small></span></a>
+  </div>
+</div>
 
 <script>
 "use strict";
@@ -628,6 +659,10 @@ document.addEventListener("click", function(e){ if (!e.target.closest(".search-b
 document.getElementById("burger").addEventListener("click", function(){ document.getElementById("mobileMenu").classList.toggle("open"); });
 document.getElementById("sideToggle").addEventListener("click", function(){ document.getElementById("sideNav").classList.toggle("open"); });
 window.addEventListener("hashchange", route);
+var cModal = document.getElementById("contactModal");
+document.querySelectorAll('[data-contact]').forEach(function(b){ b.addEventListener('click', function(){ document.getElementById("mobileMenu").classList.remove("open"); cModal.classList.add("open"); }); });
+cModal.querySelectorAll('[data-close]').forEach(function(b){ b.addEventListener('click', function(){ cModal.classList.remove("open"); }); });
+document.addEventListener('keydown', function(e){ if (e.key === 'Escape') cModal.classList.remove("open"); });
 renderHome();
 route();
 </script>
