@@ -179,8 +179,10 @@ h2{font-size:clamp(1.65rem,3.2vw,2.45rem);font-weight:800;line-height:1.4;letter
 .plan .price{font-size:2rem;font-weight:800;line-height:1.2}
 .plan .price small{font-size:.85rem;color:var(--mut);font-weight:500}
 .plan .btn{margin-top:auto;justify-content:center}
+.plan.has-ribbon{position:relative;overflow:hidden}
+.ribbon-band{position:absolute;top:15px;left:-34px;width:122px;background:#D92323;color:#fff;font-weight:800;font-size:.86rem;line-height:1.5;text-align:center;padding:3.5px 0;transform:rotate(-45deg);box-shadow:0 4px 10px rgba(217,35,35,.35);z-index:2}
 .plan.hot{border:2px solid var(--orange);position:relative}
-.plan.hot .tag{position:absolute;top:-13px;inset-inline-start:50%;transform:translateX(50%);background:var(--orange);color:#fff;font-size:.75rem;font-weight:700;padding:3px 13px;border-radius:99px}
+.plan.hot .tag{position:absolute;top:-13px;inset-inline-start:50%;transform:translateX(50%);background:var(--orange);color:#fff;font-size:.75rem;font-weight:700;padding:3px 13px;border-radius:99px;white-space:nowrap}
 /* cta band */
 .cta-band{background:linear-gradient(135deg,#FF6A35,#F0440F);border-radius:26px;padding:56px 40px;text-align:center;color:#fff;box-shadow:0 30px 60px -28px rgba(240,68,15,.55)}
 .cta-band h2{color:#fff}
@@ -653,9 +655,9 @@ footer p{font-size:.93rem;line-height:1.8}
     </div>
     <div class="plans reveal">
       <div class="plan"><span class="dur">شهر</span><span class="price num">99 <small>جنيه</small></span><button class="btn btn-primary" data-contact>اشترك الآن</button></div>
-      <div class="plan"><span class="dur">3 شهور</span><span class="price num">269 <small>جنيه</small></span><button class="btn btn-primary" data-contact>اشترك الآن</button></div>
-      <div class="plan"><span class="dur">6 شهور</span><span class="price num">549 <small>جنيه</small></span><button class="btn btn-primary" data-contact>اشترك الآن</button></div>
-      <div class="plan"><span class="dur">سنة</span><span class="price num">1099 <small>جنيه</small></span><button class="btn btn-primary" data-contact>اشترك الآن</button></div>
+      <div class="plan has-ribbon"><span class="ribbon-band">خصم</span><span class="dur">3 شهور</span><span class="price num">269 <small>جنيه</small></span><button class="btn btn-primary" data-contact>اشترك الآن</button></div>
+      <div class="plan has-ribbon"><span class="ribbon-band">خصم</span><span class="dur">6 شهور</span><span class="price num">549 <small>جنيه</small></span><button class="btn btn-primary" data-contact>اشترك الآن</button></div>
+      <div class="plan has-ribbon"><span class="ribbon-band">خصم</span><span class="dur">سنة</span><span class="price num">1099 <small>جنيه</small></span><button class="btn btn-primary" data-contact>اشترك الآن</button></div>
       <div class="plan hot"><span class="tag">الأفضل قيمة</span><span class="dur">مدى الحياة</span><span class="price num">4799 <small>جنيه</small></span><button class="btn btn-dark" data-contact>اشترك الآن</button></div>
     </div>
   </div>
