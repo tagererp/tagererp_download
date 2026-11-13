@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دليل TAGER | شرح برنامج تاجر قسمًا قسمًا</title>
+<meta name="description" content="دليل استخدام برنامج TAGER: شرح المبيعات والمشتريات والمخزون والحسابات ونقاط البيع والتقارير والنسخ الاحتياطي والمزامنة، خطوة بخطوة وبالصور.">
+<meta property="og:title" content="دليل TAGER | شرح برنامج تاجر">
+<meta property="og:description" content="كل ما تحتاج معرفته لاستخدام TAGER وإدارة نشاطك بسهولة — شرح مفصل لكل قسم بالخطوات والصور.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="img/dash-hero.jpg">
+<link rel="icon" type="image/png" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --orange:#FE501C; --orange-dark:#D63E12; --orange-soft:#FFF0E9;
+  --ink:#191410; --ink-2:#453C34; --mut:#857A6E;
+  --line:#EFE9E2; --soft:#FBF8F4; --bg:#FFFFFF; --dark:#171310;
+  --radius:16px; --head-h:70px;
+  --shadow:0 24px 48px -24px rgba(25,20,16,.22);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Alexandria',system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.8;font-size:16.5px;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin-inline:auto;padding-inline:24px}
+.num{font-variant-numeric:tabular-nums}
+/* header (same as main site) */
+header{position:fixed;inset-inline:0;top:0;height:var(--head-h);z-index:200;background:rgba(255,255,255,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.head-in{height:var(--head-h);display:flex;align-items:center;gap:26px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:1.24rem}
+.brand img{width:40px;height:40px;border-radius:11px}
+.brand small{display:block;font-size:.6rem;font-weight:600;color:var(--mut);letter-spacing:2.5px;line-height:1}
+nav.main{display:flex;gap:24px;margin-inline-start:6px}
+nav.main a{font-size:.94rem;font-weight:500;color:var(--ink-2);padding:6px 2px}
+nav.main a:hover{color:var(--ink)}
+nav.main a.guide-link{color:var(--orange-dark);font-weight:800;border:1.5px solid #F6C7B4;background:var(--orange-soft);border-radius:99px;padding:5px 14px}
+.head-cta{margin-inline-start:auto;display:flex;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:inherit;font-weight:700;font-size:.95rem;border:0;cursor:pointer;border-radius:12px;padding:11px 20px;white-space:nowrap}
+.btn-primary{background:var(--orange);color:#fff;box-shadow:0 12px 26px -12px rgba(254,80,28,.65)}
+.btn-primary:hover{background:var(--orange-dark)}
+.burger{display:none;background:none;border:0;cursor:pointer;padding:8px;color:var(--ink)}
+.mobile-menu{display:none;background:#fff;border-bottom:1px solid var(--line);padding:10px 24px 18px;position:fixed;top:var(--head-h);inset-inline:0;z-index:199;box-shadow:0 30px 40px -30px rgba(0,0,0,.3)}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:block;padding:11px 4px;font-weight:600;border-bottom:1px solid var(--soft)}
+.mobile-menu a.guide-link{color:var(--orange-dark);font-weight:800}
+.mobile-menu .btn{width:100%;justify-content:center;margin-top:10px}
+/* guide hero */
+.g-hero{padding:calc(var(--head-h) + 56px) 0 46px;background:radial-gradient(900px 420px at 88% -10%,#FFE9DF 0%,rgba(255,233,223,0) 55%),var(--soft);border-bottom:1px solid var(--line)}
+.g-hero h1{font-size:clamp(2.1rem,4.6vw,3.2rem);font-weight:800;line-height:1.3}
+.g-hero h1 .hl{color:var(--orange)}
+.g-hero .sub{margin-top:10px;font-size:1.22rem;font-weight:700;color:var(--ink-2)}
+.g-hero .desc{margin-top:8px;color:var(--mut);max-width:44rem;font-size:1.02rem}
+.search-box{position:relative;max-width:640px;margin-top:28px}
+.search-box svg{position:absolute;top:50%;transform:translateY(-50%);inset-inline-start:18px;color:var(--mut)}
+.search-box input{width:100%;font-family:inherit;font-size:1.05rem;padding:16px 52px 16px 18px;border:1.5px solid var(--line);border-radius:16px;background:#fff;color:var(--ink);outline:none;box-shadow:0 14px 30px -20px rgba(25,20,16,.25)}
+.search-box input:focus{border-color:var(--orange)}
+.search-results{position:absolute;top:calc(100% + 8px);inset-inline:0;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;display:none;z-index:50;max-height:380px;overflow-y:auto}
+.search-results.open{display:block}
+.search-results a{display:flex;align-items:center;gap:10px;padding:12px 18px;border-bottom:1px solid var(--soft)}
+.search-results a:last-child{border-bottom:0}
+.search-results a:hover{background:var(--soft)}
+.search-results .cat{font-size:.74rem;font-weight:700;color:var(--orange-dark);background:var(--orange-soft);border-radius:99px;padding:2px 10px;flex:none}
+.search-results .ttl{font-weight:600;font-size:.95rem}
+.search-results .none{padding:16px 18px;color:var(--mut);font-size:.95rem}
+/* home: category sections */
+.g-home{padding:54px 0 80px}
+.g-cat{padding:30px 0;border-bottom:1px solid var(--line)}
+.g-cat:last-child{border-bottom:0}
+.g-cat h2{font-size:1.45rem;font-weight:800;display:flex;align-items:center;gap:12px}
+.g-cat h2 .no{width:34px;height:34px;flex:none;border-radius:10px;background:var(--orange-soft);color:var(--orange-dark);display:grid;place-items:center;font-size:.95rem;font-weight:800}
+.g-cat .cdesc{color:var(--mut);margin-top:6px;max-width:46rem}
+.g-links{list-style:none;margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:4px 34px}
+.g-links a{display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:10px;font-weight:600;color:var(--ink-2)}
+.g-links a:hover{background:var(--soft);color:var(--orange-dark)}
+.g-links a svg{color:var(--orange);flex:none;transform:scaleX(-1)}
+/* article layout */
+.g-article{padding:calc(var(--head-h) + 34px) 0 80px;display:none}
+.g-article.open{display:block}
+.g-grid{display:grid;grid-template-columns:262px 1fr;gap:44px;align-items:start}
+.crumb{font-size:.88rem;color:var(--mut);margin-bottom:18px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.crumb a{color:var(--ink-2);font-weight:600}
+.crumb a:hover{color:var(--orange-dark)}
+.crumb b{color:var(--ink)}
+.side{position:sticky;top:calc(var(--head-h) + 20px);max-height:calc(100vh - var(--head-h) - 40px);overflow-y:auto;padding-inline-end:6px;scrollbar-width:thin}
+.side h4{font-size:.8rem;color:var(--mut);font-weight:800;margin:18px 0 6px}
+.side h4:first-child{margin-top:0}
+.side a{display:block;padding:5px 10px;border-radius:8px;font-size:.92rem;color:var(--ink-2);font-weight:500}
+.side a:hover{background:var(--soft)}
+.side a.active{background:var(--orange-soft);color:var(--orange-dark);font-weight:700}
+.side-toggle{display:none;width:100%;margin-bottom:16px}
+.art h1{font-size:clamp(1.7rem,3.4vw,2.3rem);font-weight:800;line-height:1.4}
+.art .intro{margin-top:12px;color:var(--ink-2);font-size:1.05rem;max-width:44rem}
+.art h3.step-h{font-size:1.12rem;font-weight:800;margin:30px 0 8px;display:flex;gap:10px;align-items:center}
+.art h3.step-h .sn{width:28px;height:28px;flex:none;border-radius:50%;background:var(--orange);color:#fff;display:grid;place-items:center;font-size:.85rem;font-weight:800}
+.art p{color:var(--ink-2);max-width:46rem}
+.art .result{margin-top:34px;background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px}
+.art .result h3{font-size:1.05rem;font-weight:800;margin-bottom:6px;color:var(--orange-dark)}
+.art figure{margin:16px 0 6px;max-width:760px}
+/* ScreenshotWindow (same component as the landing page) */
+.shot-window{background:#fff;border:1px solid #E7E0D4;border-radius:18px;box-shadow:0 24px 44px -26px rgba(25,20,16,.28),0 4px 14px -6px rgba(25,20,16,.08);overflow:hidden}
+.shot-window .win-bar{display:flex;align-items:center;gap:6px;height:44px;padding:0 14px;background:#F4F1EC;border-bottom:1px solid #EAE4D9}
+.shot-window .win-bar i{width:9px;height:9px;border-radius:50%;background:#D9D1C3;display:block;flex:none}
+.shot-window .win-bar i:first-child{background:rgba(254,80,28,.45)}
+.shot-window .win-bar em{font-style:normal;margin-inline-start:8px;font-size:.78rem;color:var(--ink-2);font-weight:700}
+.shot-window .win-body{aspect-ratio:16/9;overflow-y:auto;overflow-x:hidden;background:#fff;scrollbar-width:thin;scrollbar-color:#D8CFC0 transparent}
+.shot-window .win-body::-webkit-scrollbar{width:5px}
+.shot-window .win-body::-webkit-scrollbar-thumb{background:#D8CFC0;border-radius:99px}
+.shot-window .win-body img{width:100%;height:auto}
+/* prev / next + related */
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:40px}
+.pn a{border:1px solid var(--line);border-radius:var(--radius);padding:16px 20px;background:#fff}
+.pn a:hover{border-color:#F3C3B0}
+.pn small{display:block;color:var(--mut);font-weight:600;font-size:.8rem}
+.pn b{font-size:1rem}
+.pn .nx{text-align:left}
+.pn .disabled{opacity:.4;pointer-events:none}
+.related{margin-top:36px}
+.related h3{font-size:1.08rem;font-weight:800;margin-bottom:10px}
+.related ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:4px 30px}
+.related a{display:flex;gap:9px;align-items:center;padding:8px 10px;border-radius:10px;font-weight:600;color:var(--ink-2)}
+.related a:hover{background:var(--soft);color:var(--orange-dark)}
+.related a svg{color:var(--orange);flex:none;transform:scaleX(-1)}
+/* footer */
+footer{background:var(--dark);color:#CFC6BA;padding:44px 0 30px;margin-top:0}
+.foot-in{display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.foot-brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:1.15rem;color:#fff}
+.foot-brand img{width:36px;height:36px;border-radius:10px}
+footer a{color:#CFC6BA}
+footer a:hover{color:#fff}
+.copy{margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.09);font-size:.85rem;color:#9A8F83;text-align:center}
+@media (max-width:1024px){
+  nav.main{display:none}
+  .burger{display:block}
+  .head-cta .btn{padding:9px 14px;font-size:.86rem}
+}
+@media (max-width:860px){
+  .g-grid{grid-template-columns:1fr}
+  .side{display:none;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;position:static;max-height:none}
+  .side.open{display:block}
+  .side-toggle{display:inline-flex;justify-content:center}
+  .g-links{grid-template-columns:1fr}
+  .related ul{grid-template-columns:1fr}
+  .pn{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header id="header">
+  <div class="wrap head-in">
+    <a class="brand" href="index.html"><img src="img/logo.png" alt="TAGER"><span>تاجر<small>TAGER ERP</small></span></a>
+    <nav class="main">
+      <a href="index.html">الرئيسية</a>
+      <a href="index.html#features">المميزات</a>
+      <a href="index.html#modules">أقسام النظام</a>
+      <a href="index.html#why">لماذا TAGER؟</a>
+      <a href="guide.html" class="guide-link">دليل TAGER</a>
+      <a href="index.html#faq">الأسئلة الشائعة</a>
+    </nav>
+    <div class="head-cta">
+      <a class="btn btn-primary" href="https://github.com/tagererp/TagerERP_download/releases/download/v1.1.0/Tager.ERP_1.1.0_x64-setup.exe">تحميل البرنامج</a>
+      <button class="burger" id="burger" aria-label="القائمة"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">الرئيسية</a>
+    <a href="index.html#features">المميزات</a>
+    <a href="index.html#modules">أقسام النظام</a>
+    <a href="index.html#why">لماذا TAGER؟</a>
+    <a href="guide.html" class="guide-link">دليل TAGER</a>
+    <a href="index.html#faq">الأسئلة الشائعة</a>
+    <a class="btn btn-primary" href="https://github.com/tagererp/TagerERP_download/releases/download/v1.1.0/Tager.ERP_1.1.0_x64-setup.exe">تحميل البرنامج</a>
+  </div>
+</header>
+
+<!-- ================= GUIDE HOME ================= -->
+<div id="homeView">
+  <section class="g-hero">
+    <div class="wrap">
+      <h1>دليل <span class="hl">TAGER</span></h1>
+      <p class="sub">كل ما تحتاج معرفته لاستخدام TAGER وإدارة نشاطك بسهولة.</p>
+      <p class="desc">استكشف أقسام النظام، وتعرّف على طريقة استخدام كل شاشة، والوظائف المتاحة فيها خطوة بخطوة.</p>
+      <div class="search-box">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.8-3.8"/></svg>
+        <input type="text" id="searchInput" placeholder="ابحث في دليل TAGER..." autocomplete="off">
+        <div class="search-results" id="searchResults"></div>
+      </div>
+    </div>
+  </section>
+  <main class="g-home">
+    <div class="wrap" id="catList"></div>
+  </main>
+</div>
+
+<!-- ================= ARTICLE ================= -->
+<div class="g-article" id="articleView">
+  <div class="wrap">
+    <button class="btn btn-primary side-toggle" id="sideToggle">أقسام الدليل</button>
+    <div class="g-grid">
+      <aside class="side" id="sideNav"></aside>
+      <article class="art" id="artBody"></article>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-in">
+      <span class="foot-brand"><img src="img/logo.png" alt="TAGER"> تاجر</span>
+      <span><a href="index.html">الصفحة الرئيسية</a> &nbsp;·&nbsp; <a href="guide.html">دليل TAGER</a> &nbsp;·&nbsp; <a href="index.html#pricing">الباقات</a></span>
+    </div>
+    <p class="copy">© 2026 TAGER — جميع الحقوق محفوظة</p>
+  </div>
+</footer>
+
+<script>
+"use strict";
+var ARROW = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m0 0l6-6m-6 6l6 6"/></svg>';
+var CATS = [
+  { id:"start",     t:"ابدأ من هنا",            d:"التفعيل وإنشاء الحساب الأول وإعداد شركتك والتعرف على لوحة التحكم." },
+  { id:"sales",     t:"المبيعات",               d:"فواتير البيع والمرتجعات وعروض الأسعار والمدفوعات والطباعة." },
+  { id:"customers", t:"العملاء",                d:"إضافة العملاء ومتابعة أرصدتهم وكشوف حساباتهم." },
+  { id:"purchases", t:"المشتريات",              d:"فواتير الشراء والمرتجعات وطلبات الشراء ومدفوعات الموردين." },
+  { id:"suppliers", t:"الموردون",               d:"إضافة الموردين ومتابعة حساباتهم ومدفوعاتهم." },
+  { id:"inventory", t:"المخزون",                d:"الأصناف والتصنيفات والمخازن والتحويلات والباركود وتنبيهات الانخفاض." },
+  { id:"pos",       t:"نقاط البيع POS",         d:"فتح الجلسات والبيع السريع بالباركود وإغلاق الجلسة." },
+  { id:"accounting",t:"المحاسبة",               d:"دليل الحسابات والقيود اليومية ودفتر الأستاذ وميزان المراجعة والأرصدة الافتتاحية." },
+  { id:"finance",   t:"المالية",                d:"المصروفات والإيرادات والشيكات والأصول الثابتة والرواتب والتسوية البنكية." },
+  { id:"reports",   t:"التقارير",               d:"تقارير المبيعات والمخزون والمالية والعملاء وإقرار ضريبة القيمة المضافة." },
+  { id:"settings",  t:"الإعدادات والتخصيص",     d:"المستخدمون والصلاحيات والقوالب والترقيم والطباعة واستيراد البيانات." },
+  { id:"backup",    t:"النسخ الاحتياطي والمزامنة", d:"النسخ السحابي على جوجل درايف والاستعادة والمزامنة بين الأجهزة وإقفال الفترات." }
+];
+var ARTICLES = [
+/* ===== ابدأ من هنا ===== */
+{s:"activate", c:"start", t:"تفعيل البرنامج بالسيريال", kw:"تفعيل سيريال ترخيص كود الجهاز تنشيط", i:"عند تشغيل TAGER لأول مرة تظهر شاشة التفعيل. الترخيص مرتبط بجهازك فقط، والتفعيل يتم مرة واحدة ولا يحتاج إنترنت بعد ذلك.", steps:[
+ ["انسخ كود الجهاز","من شاشة التفعيل انسخ «كود الجهاز» الظاهر أمامك — هذا الكود يعرّف جهازك ويُبنى عليه السيريال الخاص بك."],
+ ["أرسل الكود واستلم السيريال","أرسل كود الجهاز إلينا عبر واتساب، وسيصلك سيريال التفعيل الخاص بجهازك وباقتك."],
+ ["الصق السيريال وفعّل","الصق السيريال في خانة «السيريال» ثم اضغط «تفعيل». إذا كان على الجهاز رئيسي آخر وتريد ربط هذا الجهاز كجهاز فرعي، استخدم خيار «ربط كجهاز فرعي» أسفل الشاشة بدل التفعيل.", "img/step2.jpg","تفعيل برنامج تاجر بالسيريال"]],
+ r:"تظهر بطاقة الترخيص الخاصة بك، وتضغط «دخول البرنامج» لبدء الإعداد. السيريال لا يعمل على جهاز آخر.", rel:["first-account","sync"]},
+{s:"first-account", c:"start", t:"إنشاء الحساب الأول وإعداد الشركة", kw:"حساب جديد إعداد أول معالج شركة مستخدم مدير", i:"بعد التفعيل يرشدك معالج الإعداد لإنشاء حساب شركتك وحساب المدير في خطوات قصيرة.", steps:[
+ ["اختر «إنشاء حساب»","من شاشة «كيف تريد أن تبدأ؟» اختر إنشاء حساب جديد. تنبيه: على جهاز تمت مزامنته من جهاز رئيسي اختر «تسجيل الدخول» ولا تنشئ حسابًا جديدًا حتى لا تُستبدل البيانات."],
+ ["أدخل بيانات الشركة","اكتب اسم النشاط وبيانات التواصل والعنوان — تظهر هذه البيانات لاحقًا على الفواتير المطبوعة."],
+ ["أنشئ حساب المدير","حدد اسم المستخدم وكلمة المرور لحساب المدير — هذا الحساب له كل الصلاحيات ويدير بقية المستخدمين."],
+ ["سجّل الدخول","بعد انتهاء المعالج سجّل الدخول باسم المستخدم وكلمة المرور، وستصلك لوحة التحكم."]],
+ r:"يصبح نظامك جاهزًا: تضيف الأصناف والعملاء وتبدأ البيع. يمكنك تعديل بيانات الشركة في أي وقت من الإعدادات.", rel:["company-settings","dashboard","add-product"]},
+{s:"company-settings", c:"start", t:"إعدادات الشركة والشعار", kw:"شركة شعار عنوان هاتف بيانات النشاط", i:"بيانات شركتك وشعارها يظهران على كل المستندات المطبوعة. عدّلهما من مكان واحد ويُطبَّق التعديل على كل القوالب.", steps:[
+ ["افتح إعدادات الشركة","من القائمة الجانبية: الإعدادات ← إعدادات الشركة."],
+ ["عدّل البيانات والشعار","حدّث الاسم والهواتف والعنوان، وارفع شعار نشاطك من زر تغيير الشعار."],
+ ["احفظ","اضغط حفظ — تُستخدم البيانات الجديدة في الفواتير والتقارير المطبوعة فورًا."]],
+ r:"كل طباعة بعد الحفظ تحمل بياناتك وشعارك المحدثين.", rel:["templates","printing"]},
+{s:"dashboard", c:"start", t:"لوحة التحكم والتنبيهات", kw:"لوحة تحكم رئيسية مؤشرات مبيعات اليوم تنبيهات جرس", i:"لوحة التحكم هي أول شاشة بعد الدخول: مؤشرات نشاطك اليوم والشهر، وإجراءات سريعة، وتنبيهات بما يحتاج انتباهك.", steps:[
+ ["اقرأ المؤشرات","بطاقات لوحة التحكم تعرض مبيعات اليوم والشهر وصافي الربح الشهري والمستحقات والمخزون — وقيمة كل بطاقة رابط يفتح صفحتها مباشرة.", "img/dash-hero.jpg","لوحة تحكم تاجر"],
+ ["استخدم الإجراءات السريعة","من «إجراءات سريعة» أنشئ فاتورة بيع أو شراء أو عميلًا أو موردًا أو مصروفًا أو إيرادًا دون التنقل في القوائم."],
+ ["تابع التنبيهات","جرس التنبيهات أعلى الشاشة يجمع: أصناف منخفضة أو نافدة، شيكات مستحقة أو قاربت، حالة النسخ الاحتياطي السحابي، وتوفر تحديث جديد للبرنامج."]],
+ r:"من شاشة واحدة تعرف حالة نشاطك اليوم وتصل لأي قسم بضغطة.", rel:["activity-log","low-stock","cloud-backup"]},
+{s:"activity-log", c:"start", t:"سجل العمليات الأخيرة", kw:"سجل نشاط عمليات تاريخ مستندات من فعل", i:"سجل العمليات يعرض كل ما حدث في النظام بترتيب زمني: من أنشأ أو عدّل أو حذف أي مستند ومتى.", steps:[
+ ["افتح السجل","من لوحة التحكم اضغط «سجل العمليات الأخيرة» أو افتحه من القائمة."],
+ ["تصفح الخط الزمني","تظهر العمليات مرتبة من الأحدث: إنشاء وتعديل وحذف الفواتير والمدفوعات والحركات المالية مع اسم المستخدم."],
+ ["راجع تاريخ مستند بعينه","داخل أي فاتورة أو مستند ستجد تبويب «السجل» يعرض تاريخ هذا المستند وحده."]],
+ r:"تتبع كامل لأي تغيير في بياناتك دون الحاجة لسؤال أي مستخدم.", rel:["users-roles","dashboard"]},
+/* ===== المبيعات ===== */
+{s:"create-invoice", c:"sales", t:"إنشاء فاتورة مبيعات", kw:"فاتورة مبيعات إنشاء بيع عميل بنود دفع حفظ", i:"فاتورة المبيعات هي المستند الأساسي للبيع: تخصم المخزون وتحدّث رصيد العميل وتنشئ قيدًا محاسبيًا تلقائيًا عند الحفظ.", steps:[
+ ["افتح فاتورة جديدة","المبيعات ← الفواتير ← اضغط «إضافة».", "img/sales-list.jpg","فواتير المبيعات"],
+ ["اختر العميل","ابحث باسم العميل أو اختره من القائمة، ويمكنك إنشاء عميل جديد سريعًا من نفس الخانة دون مغادرة الفاتورة."],
+ ["أضف البنود","ابحث بالاسم أو امسح الباركود لإضافة الأصناف، وحدد الكمية والسعر وخصم كل بند إن وجد.", "img/sales-form.jpg","فاتورة مبيعات"],
+ ["حدد الدفع واحفظ","اختر طريقة الدفع (نقدي أو محفظة إلكترونية أو تحويل بنكي) والمبلغ المدفوع الآن — الباقي يصبح مستحقًا على العميل. ثم اضغط حفظ."]],
+ r:"تُحفظ الفاتورة برقم تلقائي، وينقص مخزون البنود، ويتحدث رصيد العميل وقيد اليومية تلقائيًا.", rel:["edit-invoice","sales-returns","customer-payments","print-invoice"]},
+{s:"edit-invoice", c:"sales", t:"تعديل فاتورة أو حذفها", kw:"تعديل فاتورة حذف تغيير تراجع", i:"أي فاتورة محفوظة يمكن تعديلها، وتُعاد حساباتها ومخزونها وقيودها تلقائيًا مع كل تعديل.", steps:[
+ ["افتح الفاتورة","من المبيعات ← الفواتير اضغط على صف الفاتورة — تفتح في محررها مباشرة بحالة مقفولة."],
+ ["اضغط «تعديل»","من أسفل المحرر اضغط «تعديل» لفك القفل وتغيير العميل أو البنود أو الدفع."],
+ ["احفظ التعديلات","اضغط «حفظ التعديلات». أثناء الكتابة يمكنك التراجع وإعادة التراجع داخل المحرر بـ Ctrl+Z و Ctrl+Y حتى ٣٠ خطوة."],
+ ["الحذف","من قائمة الفواتير أو من المحرر احذف الفاتورة إذا كانت صلاحيات دورك تسمح — يُحذف معها قيدها وترجع كمياتها للمخزون."]],
+ r:"كل تعديل أو حذف ينعكس فورًا على المخزون ورصيد العميل والقيود والتقارير.", rel:["create-invoice","activity-log","users-roles"]},
+{s:"sales-returns", c:"sales", t:"مرتجعات المبيعات", kw:"مرتجع مبيعات إرجاع عميل رد", i:"مرتجع المبيعات يعيد أصنافًا باعها العميل إلى مخزونك ويخفّض مستحقاته بنفس القيمة.", steps:[
+ ["افتح مرتجعًا جديدًا","المبيعات ← المرتجعات ← «إضافة»."],
+ ["اختر العميل والبنود","اختر العميل — تظهر أصنافه المشتراة أولًا مميزة — وحدد البنود والكميات المرتجعة."],
+ ["احفظ","راجع الإجمالي واضغط حفظ."]],
+ r:"ترجع الكميات للمخزون، وينقص رصيد العميل، ويُنشأ قيد عكسي تلقائي. يظهر المرتجع في ملف العميل وتقارير المرتجعات.", rel:["create-invoice","customer-profile","purchase-returns"]},
+{s:"quotations", c:"sales", t:"عروض الأسعار", kw:"عرض سعر عروض أسعار تسعير عميل", i:"عرض السعر مستند تسعير ترسله للعميل قبل البيع: لا يخصم مخزونًا ولا ينشئ قيدًا محاسبيًا.", steps:[
+ ["أنشئ عرض سعر","المبيعات ← عروض الأسعار ← «إضافة»."],
+ ["أضف البنود والأسعار","اختر العميل وأضف الأصناف بأسعار العرض وخصوماته."],
+ ["اطبعه أو أرسله","من المعاينة اطبع عرض السعر أو صدّره لمشاركته مع العميل."]],
+ r:"يبقى عرض السعر محفوظًا للرجوع إليه، ولا يتأثر المخزون أو حساب العميل به.", rel:["create-invoice","print-invoice"]},
+{s:"customer-payments", c:"sales", t:"تسجيل دفعة من عميل", kw:"دفعة عميل تحصيل مدفوعات سداد مستحقات", i:"سجّل أي مبلغ يصلك من عميل — دفعة على فاتورة أو دفعة مقدمة — وسيتحدث رصيده وفواتيره تلقائيًا.", steps:[
+ ["افتح مدفوعات العملاء","المبيعات ← المدفوعات ← «إضافة».", "img/sales-list.jpg","مدفوعات العملاء"],
+ ["أدخل الدفعة","اختر العميل والمبلغ وطريقة الدفع (نقدي أو محفظة إلكترونية أو تحويل بنكي) والخزينة المستلمة."],
+ ["وزّع وادفع","وزّع المبلغ على فواتير العميل المفتوحة أو اتركه دفعة عامة على الحساب، ثم احفظ."]],
+ r:"ينقص مستحق العميل بنفس المبلغ. وأي مبلغ زائد عن مستحقاته يبقى رصيدًا دائنًا له يُخصم من فواتيره القادمة.", rel:["customer-profile","create-invoice","checks"]},
+{s:"print-invoice", c:"sales", t:"معاينة وطباعة الفاتورة", kw:"طباعة فاتورة معاينة قالب حجم ورق حراري تصدير", i:"كل مستند له معاينة طباعة بنفس شكله النهائي، مع قوالب متعددة ومقاسات ورق مختلفة.", steps:[
+ ["افتح المعاينة","داخل الفاتورة اضغط «معاينة الفاتورة»."],
+ ["اختر القالب والمقاس","من الشريط الجانبي للمعاينة اختر قالب الفاتورة وحجم الورق (A4 أو حراري أو مقاسك المخصص) واضبط حجم خط الورقة بالسحب."],
+ ["اطبع أو صدّر","اطبع مباشرة أو صدّر المستند ملفًا من نفس نافذة المعاينة."]],
+ r:"تخرج الفاتورة ببيانات شركتك وشعارها، وبنفس المقاس والخط اللذين اخترتهما.", rel:["templates","printing","create-invoice"]},
+/* ===== العملاء ===== */
+{s:"add-customer", c:"customers", t:"إضافة عميل", kw:"عميل جديد إضافة بيانات هاتف رصيد افتتاحي", i:"بطاقة العميل تجمع بياناته وكل فواتيره ومدفوعاته. الإضافة لا تحتاج إلا الاسم، وبقية البيانات اختيارية.", steps:[
+ ["افتح العملاء","المبيعات ← العملاء ← «إضافة»."],
+ ["أدخل البيانات","الاسم (إلزامي)، ورقم الهاتف والهاتف الآخر والعنوان. يمكنك أيضًا الإنشاء السريع أثناء كتابة فاتورة."],
+ ["الرصيد الافتتاحي","إذا كان للعميل رصيد سابق عليك أو له، سجّله في «الرصيد الافتتاحي» ليبدأ حسابه صحيحًا من أول يوم."],
+ ["احفظ","اضغط حفظ وسيظهر العميل في القائمة وفي كل منتقيات العملاء."]],
+ r:"للعميل ملف كامل من لحظة إنشائه: رصيد وفواتير ومرتجعات ومدفوعات وكشف حساب.", rel:["customer-profile","opening-balances","create-invoice"]},
+{s:"customer-profile", c:"customers", t:"ملف العميل وكشف الحساب", kw:"ملف عميل كشف حساب رصيد فواتير العميل مدفوعات", i:"ملف العميل شاشة واحدة فيها كل علاقتك المالية به: ملخص الرصيد، وفواتيره، ومرتجعاته، ومدفوعاته، وكشف حساب مفصل.", steps:[
+ ["افتح الملف","المبيعات ← العملاء ← اضغط على صف العميل.", "img/party-profile.jpg","ملف عميل"],
+ ["اقرأ الملخص","أعلى الملف: رصيد العميل الحالي وإجمالي مبيعاته ومدفوعاته — تعرف مستحقه في ثوانٍ."],
+ ["تصفح التبويبات","تنقل بين الفواتير والمرتجعات والمدفوعات وكشف الحساب، وراجع أي حركة بتاريخها ومستندها."],
+ ["اطبع كشف الحساب","من تبويب كشف الحساب اضغط «معاينة وطباعة» لإخراج كشف رسمي للعميل."]],
+ r:"صورة كاملة ومحدثة لحساب أي عميل في أي لحظة، جاهزة للطباعة والمشاركة.", rel:["customer-payments","add-customer","party-reports"]},
+/* ===== المشتريات ===== */
+{s:"purchase-invoice", c:"purchases", t:"إنشاء فاتورة مشتريات", kw:"فاتورة مشتريات شراء مورد بنود تكلفة مخزون", i:"فاتورة المشتريات تدخل الأصناف إلى مخزونك بسعر شرائها وتحدّث حساب المورد وقيد اليومية.", steps:[
+ ["افتح فاتورة جديدة","المشتريات ← الفواتير ← «إضافة».", "img/purch-list.jpg","فواتير المشتريات"],
+ ["اختر المورد والبنود","اختر المورد، وأضف الأصناف بكمياتها وسعر شرائها — يمكن إنشاء صنف جديد من نفس الشاشة."],
+ ["حدد الدفع واحفظ","سجّل ما دفعته الآن وطريقته؛ الباقي يصبح مستحقًا للمورد. ثم احفظ."]],
+ r:"تزيد كميات المخزون، ويتحدث رصيد المورد، ويُنشأ القيد تلقائيًا. متوسط تكلفة الصنف يتحدث مع كل شراء.", rel:["purchase-returns","supplier-payments","add-product"]},
+{s:"purchase-returns", c:"purchases", t:"مرتجعات المشتريات", kw:"مرتجع مشتريات إرجاع مورد رد بضاعة", i:"عند إرجاع بضاعة لمورد، مرتجع المشتريات يخرجها من مخزونك ويخفّض مستحقاته.", steps:[
+ ["افتح مرتجعًا جديدًا","المشتريات ← المرتجعات ← «إضافة»."],
+ ["اختر المورد والبنود","حدد المورد والبنود المرتجعة وكمياتها."],
+ ["احفظ","راجع الإجمالي واضغط حفظ."]],
+ r:"تنقص الكميات من المخزون وينقص مستحق المورد بنفس القيمة مع قيد عكسي تلقائي.", rel:["purchase-invoice","sales-returns","supplier-profile"]},
+{s:"purchase-orders", c:"purchases", t:"طلبات الشراء", kw:"طلب شراء أمر توريد مورد طلبية", i:"طلب الشراء مستند تطلبه من موردك قبل الاستلام: يوثّق ما طلبته بأسعاره دون أن يدخل المخزون أو الحسابات.", steps:[
+ ["أنشئ طلب شراء","المشتريات ← طلبات الشراء ← «إضافة»."],
+ ["أضف البنود","اختر المورد وأضف الأصناف والكميات المطلوبة وأسعارها المتفق عليها."],
+ ["تابع الاستلام","عند وصول البضاعة أنشئ فاتورة مشتريات بالكميات المستلمة فعليًا."]],
+ r:"يبقى طلب الشراء مرجعًا لما طلبته، ولا يؤثر على المخزون أو رصيد المورد حتى تُنشأ فاتورة الشراء.", rel:["purchase-invoice","add-supplier"]},
+{s:"supplier-payments", c:"purchases", t:"تسجيل دفعة لمورد", kw:"دفعة مورد سداد مدفوعات مشتريات مستحقات", i:"سجّل ما تدفعه لأي مورد — سداد فاتورة أو دفعة مقدمة — ليتحدث حسابه وفواتيره تلقائيًا.", steps:[
+ ["افتح مدفوعات الموردين","المشتريات ← المدفوعات ← «إضافة»."],
+ ["أدخل الدفعة","اختر المورد والمبلغ وطريقة الدفع والخزينة المدفوع منها."],
+ ["وزّع واحفظ","وزّع المبلغ على فواتير الشراء المفتوحة أو اتركه على الحساب، ثم احفظ."]],
+ r:"ينقص مستحق المورد بنفس المبلغ، وأي زيادة تبقى رصيدًا لك عنده تُخصم من مشترياتك القادمة.", rel:["supplier-profile","purchase-invoice","checks"]},
+/* ===== الموردون ===== */
+{s:"add-supplier", c:"suppliers", t:"إضافة مورد", kw:"مورد جديد إضافة بيانات هاتف رصيد افتتاحي", i:"بطاقة المورد تجمع بياناته وكل مشترياتك منه ومدفوعاتك له، ولا تحتاج للإضافة إلا الاسم.", steps:[
+ ["افتح الموردين","المشتريات ← الموردين ← «إضافة»."],
+ ["أدخل البيانات","الاسم (إلزامي) والهواتف والعنوان. ويمكن الإنشاء السريع من داخل فاتورة المشتريات."],
+ ["الرصيد الافتتاحي","سجّل أي رصيد سابق للمورد عندك ليبدأ حسابه صحيحًا."],
+ ["احفظ","اضغط حفظ ليظهر المورد في كل منتقيات الموردين."]],
+ r:"للمورد ملف كامل: مشتريات ومرتجعات ومدفوعات وكشف حساب محدث دائمًا.", rel:["supplier-profile","opening-balances","purchase-invoice"]},
+{s:"supplier-profile", c:"suppliers", t:"ملف المورد وكشف حسابه", kw:"ملف مورد كشف حساب رصيد مشتريات مدفوعات", i:"ملف المورد يعرض ملخص مستحقاته وكل مشترياتك ومرتجعاتك ومدفوعاتك له، مع كشف حساب قابل للطباعة.", steps:[
+ ["افتح الملف","المشتريات ← الموردين ← اضغط على صف المورد."],
+ ["اقرأ الملخص والتبويبات","راجع الرصيد المستحق، وتصفح تبويبات المشتريات والمرتجعات والمدفوعات وكشف الحساب."],
+ ["اطبع كشف الحساب","اضغط «معاينة وطباعة» من تبويب كشف الحساب لإخراج كشف رسمي."]],
+ r:"حساب أي مورد واضح ومحدث لحظيًا، جاهز للمطابقة والطباعة.", rel:["supplier-payments","add-supplier","party-reports"]},
+/* ===== المخزون ===== */
+{s:"add-product", c:"inventory", t:"إضافة صنف", kw:"صنف منتج جديد كود باركود وحدة سعر كمية افتتاحية", i:"بطاقة الصنف تحمل كوده وباركوده ووحدته وأسعاره وكميته في كل مخزن. الاسم هو الحقل الإلزامي الوحيد.", steps:[
+ ["افتح المنتجات","المخزون ← المنتجات ← «إضافة».", "img/inventory.jpg","المنتجات والمخزون"],
+ ["أدخل البيانات","الاسم، والكود (يُولّد تلقائيًا إن تركته)، والباركود، والتصنيف، والوحدة الأساسية من قائمة الوحدات أو أنشئ وحدتك."],
+ ["حدد الأسعار","سعر الشراء وسعر البيع — البيع يُستخدم افتراضيًا في الفواتير ويمكن تغييره داخل الفاتورة."],
+ ["الكمية الافتتاحية","سجّل كمية البداية والمخزن الموجودة فيه، وحد تنبيه انخفاض المخزون إن أردت تنبيهًا قبل النفاد."],
+ ["احفظ","اضغط حفظ فيظهر الصنف بجردته في صفحة المنتجات."]],
+ r:"الصنف جاهز للبيع والشراء فورًا، وحركته وكميته تُتابعان تلقائيًا مع كل مستند.", rel:["categories","product-movements","low-stock","transfers"]},
+{s:"categories", c:"inventory", t:"تصنيفات الأصناف", kw:"تصنيفات أصناف مجموعات تنظيم منتجات", i:"التصنيفات تنظّم أصنافك في مجموعات تسهّل البحث والاختيار والتقارير.", steps:[
+ ["افتح التصنيفات","المخزون ← التصنيفات ← «إضافة» وأدخل اسم التصنيف."],
+ ["اربط الأصناف","من بطاقة أي صنف اختر تصنيفه — تظهر شارة التصنيف بجانبه في المنتجات."],
+ ["اختر بالتصنيف","أثناء كتابة فاتورة، اكتب اسم التصنيف في بحث منتقي الأصناف لتظهر كل أصنافه، أو اختر صنفًا بنتيجته."]],
+ r:"أصنافك مرتبة، والوصول لأي صنف من تصنيفه أسرع في البيع والجرد والتقارير.", rel:["add-product","inventory-reports"]},
+{s:"warehouses", c:"inventory", t:"المخازن", kw:"مخازن مخزن جديد فروع مستودع كميات", i:"يمكنك إدارة أكثر من مخزن، ولكل صنف كمية مستقلة في كل مخزن تظهر أينما اخترته.", steps:[
+ ["افتح المخازن","المخزون ← المخازن ← «إضافة» وأدخل اسم المخزن."],
+ ["راجع الكميات","صفحة كل مخزن تعرض أصنافه وكمياتها الحالية، وبطاقة الصنف تعرض توزيعه على المخازن."],
+ ["اختر المخزن في المستندات","فواتير البيع والشراء والتحويلات تختار المخزن الذي تتحرك منه الكميات أو إليه."]],
+ r:"تعرف رصيد كل صنف في كل مخزن في أي لحظة، والتحويل بينها موثق بالكامل.", rel:["transfers","add-product"]},
+{s:"transfers", c:"inventory", t:"التحويل بين المخازن", kw:"تحويل مخزون نقل بضاعة بين مخازن استلام", i:"سند التحويل ينقل كميات بين مخازنك بسجل كامل: من أين خرجت ومتى وأين وصلت.", steps:[
+ ["أنشئ تحويلًا","المخزون ← التحويل بين المخازن ← «إضافة».", "img/inventory.jpg","التحويل بين المخازن"],
+ ["حدد المصدر والوجهة والبنود","اختر المخزن المُرسل والمستقبِل، وأضف البنود والكميات المحوّلة."],
+ ["احفظ وتابع الاستلام","تخرج الكميات من المصدر وتظهر «قيد التحويل» حتى يؤكد المخزن المستقبِل استلامها فتدخل رصيده."]],
+ r:"لا تضيع أي كمية بين المخازن: كل حركة موثقة بمستند وحالة استلام.", rel:["warehouses","templates"]},
+{s:"product-movements", c:"inventory", t:"حركة الصنف والأرقام التسلسلية", kw:"حركة صنف سجل حركات أرقام تسلسلية سيريال تتبع", i:"لكل صنف سجل حركة كامل، وللأصناف ذات الأرقام التسلسلية تتبع لكل جهاز برقمه من دخوله حتى بيعه.", steps:[
+ ["افتح حركة الصنف","المخزون ← المنتجات ← افتح الصنف ثم تبويب «الحركات»: كل دخول وخروج بمستنده وتاريخه، مع فلاتر و«معاينة وطباعة»."],
+ ["تتبع سيريال","المخزون ← الأرقام التسلسلية: ابحث بأي رقم تسلسلي لتعرف حالته (بالمخزون أم مباع) ومستندات حركته."],
+ ["أدخل السيريالات في المستندات","أصناف السيريال تطلب أرقامها عند الشراء والبيع من داخل الفاتورة نفسها."]],
+ r:"أي كمية أو جهاز يمكن تتبع قصته كاملة من أول حركة لآخرها.", rel:["add-product","inventory-reports"]},
+{s:"low-stock", c:"inventory", t:"تنبيهات انخفاض المخزون وملصقات الباركود", kw:"تنبيه مخزون منخفض نافد حد تنبيه باركود ملصقات طباعة", i:"حدّد لكل صنف حد تنبيه، وسيذكّرك النظام قبل النفاد. واطبع ملصقات باركود لأصنافك من إعدادات الباركود.", steps:[
+ ["عيّن حد التنبيه","من بطاقة الصنف سجّل «حد التنبيه بالمخزون المنخفض» بالكمية التي تريد التنبيه عندها."],
+ ["تابع التنبيهات","عند وصول أي صنف للحد أو نفاده يظهر تنبيه في جرس التنبيهات ولوحة التحكم بعدد الأصناف وحالتها."],
+ ["اطبع الملصقات","القوالب ← إعدادات الباركود: اضبط مقاس الملصق والمحتوى، ثم اطبع ملصقات أي صنف من صفحته."]],
+ r:"لا يفاجئك نفاد صنف أثناء البيع، وملصقاتك جاهزة بمقاس طابعتك.", rel:["add-product","dashboard","templates","pos-sale"]},
+/* ===== نقاط البيع ===== */
+{s:"pos-sale", c:"pos", t:"فتح جلسة وبيع من شاشة نقطة البيع", kw:"نقطة بيع كاشير جلسة بيع سريع باركود دفع", i:"شاشة البيع مصممة للسرعة: افتح جلسة، امسح الباركود أو ابحث، وادفع واطبع في ثوانٍ.", steps:[
+ ["افتح الجلسة","نقاط البيع ← شاشة البيع ← «فتح جلسة» وحدد الجهاز والخزينة.", "img/pos.jpg","شاشة البيع — نقاط البيع"],
+ ["أضف المنتجات","امسح الباركود أو ابحث بالاسم — تُضاف البنود للسلة، وعدّل الكميات والخصم من نفس الشاشة."],
+ ["أتمم البيع","اختر طريقة الدفع واضغط إتمام البيع، واطبع الإيصال الحراري للعميل."]],
+ r:"كل عملية بيع تُسجل فاتورة عادية: تخصم المخزون وتنشئ قيدها وتظهر في التقارير.", rel:["pos-sessions","create-invoice","printing"]},
+{s:"pos-sessions", c:"pos", t:"جلسات وأجهزة نقاط البيع", kw:"جلسات كاشير إغلاق جلسة أجهزة نقطة بيع وردية", i:"الجلسة هي وردية الكاشير: كل مبيعاتها مجمعة من فتحها حتى إغلاقها، ويمكن تسجيل أكثر من جهاز نقطة بيع.", steps:[
+ ["راجع الجلسات","نقاط البيع ← الجلسات: جلسات مفتوحة ومغلقة بمبيعات كل جلسة وطريقة دفعها."],
+ ["أغلق الجلسة","عند انتهاء الوردية أغلق الجلسة من شاشة البيع أو من قائمة الجلسات، وراجع إجمالياتها قبل الإغلاق."],
+ ["أدر الأجهزة","نقاط البيع ← الأجهزة: أضف أجهزة نقاط البيع واربط كل جهاز بمخزن وخزينة."]],
+ r:"مبيعات كل وردية وجهاز محفوظة منفصلة، والمطابقة مع النقدية أسهل في نهاية اليوم.", rel:["pos-sale","sales-reports"]},
+/* ===== المحاسبة ===== */
+{s:"chart", c:"accounting", t:"دليل الحسابات", kw:"دليل حسابات شجرة حساب رئيسي فرعي إضافة حساب", i:"دليل الحسابات شجرة كاملة بحسابات نظامية جاهزة (الخزائن، العملاء، الموردون، المبيعات، المشتريات...) ويمكنك إضافة حساباتك الفرعية تحتها.", steps:[
+ ["افتح الدليل","المحاسبة ← الحسابات — تُعرض الشجرة كاملة في صفحة واحدة.", "img/accounts.jpg","دليل الحسابات"],
+ ["أضف حسابًا فرعيًا","اختر الحساب الرئيسي وأضف تحته حسابًا فرعيًا باسمك وكودك — الحسابات النظامية نفسها محمية من الحذف والتعديل الجذري."],
+ ["افتح حسابًا","اضغط أي حساب لفتح صفحته: رصيده وحركاته في دفتر الأستاذ."]],
+ r:"بنية محاسبية صحيحة من أول يوم، قابلة للتوسع مع نشاطك دون كسر أي تقرير.", rel:["journal","ledger-trial","opening-balances"]},
+{s:"journal", c:"accounting", t:"القيود اليومية", kw:"قيد يومية قيود يدوي مدين دائن محاسبة", i:"أغلب القيود ينشئها TAGER تلقائيًا من الفواتير والمدفوعات. والقيد اليدوي متاح لأي معالجة محاسبية أخرى بشرط التوازن.", steps:[
+ ["افتح القيود","المحاسبة ← القيود اليومية — كل القيود التلقائية واليدوية بترقيم موحد.", "img/journal.jpg","القيود اليومية"],
+ ["أضف قيدًا يدويًا","«إضافة» ثم أدخل سطور القيد: الحساب والمدين والدائن والبيان — لا يُحفظ القيد إلا إذا تساوى المدين مع الدائن."],
+ ["راجع أي قيد","اضغط أي سطر قيد لعرض تفاصيله ومستنده الأصلي في لوحة جانبية."]],
+ r:"دفتر يومية متوازن دائمًا، وكل قيد مرتبط بمستنده الأصلي لمن أنشأه.", rel:["chart","ledger-trial","financial-reports"]},
+{s:"ledger-trial", c:"accounting", t:"دفتر الأستاذ وميزان المراجعة", kw:"دفتر أستاذ ميزان مراجعة أرصدة حسابات توازن", i:"دفتر الأستاذ يعرض حركات أي حساب ورصيده، وميزان المراجعة يجمع أرصدة كل الحسابات للتأكد من توازن النظام.", steps:[
+ ["دفتر الأستاذ العام","المحاسبة ← دفتر الأستاذ العام ← اختر الحساب والفترة: تظهر حركاته سطرًا سطرًا والرصيد الجاري بعد كل حركة."],
+ ["ميزان المراجعة","المحاسبة ← ميزان المراجعة: إجمالي المدين والدائن لكل حساب — يجب أن يتساوى الإجماليان دائمًا."],
+ ["اطبع","من المعاينة اطبع دفتر الأستاذ أو ميزان المراجعة أو صدّرهما."]],
+ r:"في أي لحظة تستطيع إثبات سلامة حساباتك بأرقام متوازنة موقعة بمستنداتها.", rel:["journal","chart","financial-reports"]},
+{s:"opening-balances", c:"accounting", t:"الأرصدة الافتتاحية", kw:"أرصدة افتتاحية بداية رصيد سابق عملاء موردون مخزون خزائن", i:"عند بدء العمل على TAGER سجّل أرصدة ما قبل النظام من مكان واحد: العملاء والموردين والمخزون والخزائن والحسابات.", steps:[
+ ["افتح الأرصدة الافتتاحية","الإعدادات ← الأرصدة الافتتاحية."],
+ ["سجّل كل نوع من صفحته","أرصدة العملاء والموردين من تبويباتهم، وكميات المخزون الافتتاحية من تبويب المخزون، وأرصدة الخزائن والحسابات من تبويباتها."],
+ ["راجع القيد الافتتاحي","يراجع النظام الأرصدة وينشئ عنها قيد افتتاح واحدًا متوازنًا."]],
+ r:"تبدأ حساباتك من أرقامك الحقيقية، وقاعدة ثابتة: لا يعدّل أي رصيد افتتاحي إلا من صفحته هنا.", rel:["add-customer","add-supplier","chart","period-close"]},
+{s:"cost-budgets", c:"accounting", t:"مراكز التكلفة والموازنة التقديرية", kw:"مراكز تكلفة موازنة تقديرية ميزانية مشروع أقسام", i:"وزّع مصروفاتك وإيراداتك على مراكز تكلفة (فرع، قسم، مشروع...) لتعرف ربحية كل مركز، وقارن المخطط بالفعلي في الموازنة التقديرية.", steps:[
+ ["عرّف المراكز","المحاسبة ← مراكز التكلفة ← «إضافة» وأدخل اسم كل مركز."],
+ ["اربط الحركات","اختر مركز التكلفة في المصروفات والإيرادات والمستندات ليُنسب إليه تلقائيًا."],
+ ["ضع الموازنة وقارن","المحاسبة ← الموازنة التقديرية: أدخل المبالغ المخططة لكل حساب وفترة، وقارنها بالفعلي من تقرير مراكز التكلفة."]],
+ r:"تعرف أي نشاط يربح وأيها يستهلك، وانحرافات الموازنة تظهر قبل أن تكبر.", rel:["expenses-revenues","financial-reports","journal"]},
+/* ===== المالية ===== */
+{s:"expenses-revenues", c:"finance", t:"المصروفات والإيرادات", kw:"مصروفات إيرادات بند صرف قبض خزينة", i:"سجّل أي مصروف تشغيلي أو إيراد خارج الفواتير في ثوانٍ، ليظهر أثره في الخزينة والتقارير فورًا.", steps:[
+ ["أضف مصروفًا أو إيرادًا","المالية ← المصروفات (أو الإيرادات) ← «إضافة»."],
+ ["أدخل التفاصيل","اختر البند أو أنشئه، والمبلغ، والخزينة أو الحساب، والتاريخ، ومركز التكلفة إن وجد."],
+ ["احفظ","يُحفظ السند ويُنشأ قيده تلقائيًا."]],
+ r:"الخزينة والتقارير وصافي الربح تتحدث لحظيًا مع كل مصروف أو إيراد.", rel:["money-transfers","cost-budgets","sales-reports"]},
+{s:"money-transfers", c:"finance", t:"التحويلات المالية بين الخزائن والحسابات", kw:"تحويل مالي خزينة بنك محفظة نقل أموال", i:"انقل الأموال بين خزائنك وحساباتك البنكية ومحافظك بسند تحويل موثق يوازن الطرفين.", steps:[
+ ["أنشئ تحويلًا","المالية ← التحويلات المالية ← «إضافة»."],
+ ["حدد الطرفين","من حساب/خزينة إلى حساب/خزينة، والمبلغ والتاريخ."],
+ ["احفظ","يُنفّذ التحويل وقيده في نفس اللحظة."]],
+ r:"أرصدة كل خزينة وحساب تبقى صحيحة، وكل نقل موثق بسند وقيد.", rel:["expenses-revenues","bank-recon","chart"]},
+{s:"checks", c:"finance", t:"الشيكات: الاستلام والتحصيل والإصدار", kw:"شيكات شيك تحصيل تظهير ارتداد إصدار صرف بنك", i:"إدارة كاملة للشيكات الواردة من العملاء والصادرة للموردين: استلام وتحصيل وتظهير وارتداد للوارد، وإصدار وصرف واسترداد للصادر.", steps:[
+ ["استلم شيكًا من عميل","المالية ← الشيكات ← «إضافة»: رقم الشيك والبنك والمبلغ وتاريخ الاستحقاق، واربطه بفواتير العميل إن أردت."],
+ ["تابع حالته","عند الاستحقاق سجّل «تحصيل» ليدخل المبلغ خزينتك، أو «تظهير» لدفعه لمورد، وإذا ارتدّ سجّل «ارتداد» فيعود مستحق العميل كما كان."],
+ ["أصدر شيكًا لمورد","سجّل الإصدار مرتبطًا بفواتير الشراء، ثم «صرف» عند خصمه من البنك أو «استرداد» عند إلغائه."],
+ ["تابع التنبيهات","الشيكات المستحقة والقريبة تظهر في جرس التنبيهات قبل موعدها."]],
+ r:"كل شيك له حالة واضحة وقيد لكل حركة، ولا يضيع استحقاق أو يرتد شيك دون أن تعرف.", rel:["customer-payments","supplier-payments","dashboard"]},
+{s:"assets", c:"finance", t:"الأصول الثابتة والإهلاك", kw:"أصول ثابتة إهلاك معدات أثاث قيمة دفترية", i:"سجّل أصول نشاطك (معدات، أثاث، سيارات...) واحسب إهلاكها الدوري ليظهر أثره في الحسابات والقيمة الدفترية.", steps:[
+ ["أضف أصلًا","المالية ← الأصول الثابتة ← «إضافة»: الاسم وتاريخ الشراء والقيمة والعمر الإنتاجي."],
+ ["احسب الإهلاك","راجع جدول الإهلاك للأصل — يحسب النظام القسط الدوري حسب العمر والقيمة."],
+ ["تابع القيمة الدفترية","صفحة الأصول تعرض التكلفة وما أُهلك والقيمة الدفترية الحالية لكل أصل."]],
+ r:"أصولك موثقة بقيمتها الحقيقية، والإهلاك يدخل حساباتك بانتظام دون حساب يدوي.", rel:["journal","financial-reports","expenses-revenues"]},
+{s:"salaries", c:"finance", t:"الرواتب والعمولات", kw:"رواتب عمولات موظفون مرتبات صرف أجور", i:"عرّف موظفيك ورواتبهم وعمولات مبيعاتهم، واصرف المستحقات دوريًا بقيود جاهزة.", steps:[
+ ["عرّف الموظفين","المالية ← الرواتب والعمولات: أضف الموظف وراتبه الأساسي وبياناته."],
+ ["أضف العمولات والاستقطاعات","سجّل عمولات المبيعات وأي بدلات أو استقطاعات للفترة."],
+ ["اصرف","نفّذ الصرف من الخزينة المختارة — يُنشأ القيد وتُحدّث الكشوف تلقائيًا."]],
+ r:"كشوف رواتب وعمولات موثقة لكل فترة، وتقرير الرواتب والعمولات جاهز من التقارير.", rel:["expenses-revenues","sales-reports","users-roles"]},
+{s:"bank-recon", c:"finance", t:"التسوية البنكية", kw:"تسوية بنكية كشف بنك مطابقة حساب بنكي", i:"طابِق حركات حسابك البنكي في TAGER مع كشف البنك الفعلي لاكتشاف أي فرق مبكرًا.", steps:[
+ ["افتح التسوية","المالية ← التسوية البنكية واختر الحساب البنكي والفترة."],
+ ["علّم الحركات المطابقة","راجع حركات النظام وعلّم ما ظهر فعلًا في كشف البنك."],
+ ["راجع الفرق","ما بقي غير معلّم هو الفرق المطلوب مراجعته: حركة ناقصة أو مكررة."]],
+ r:"حسابك البنكي في النظام يطابق البنك فعلًا، وأي اختلاف معروف سببه.", rel:["money-transfers","chart"]},
+/* ===== التقارير ===== */
+{s:"sales-reports", c:"reports", t:"تقارير المبيعات والربحية", kw:"تقارير مبيعات ربحية مرتجعات أداء أصناف عملاء", i:"١٦ تقريرًا جاهزًا يغطي نشاطك. تقارير المبيعات والربحية تجيب: ماذا بعت؟ ولمن؟ وبكم ربحت؟", steps:[
+ ["افتح تقارير المبيعات","التقارير ← تقارير المبيعات واختر الفترة — تُجمع فواتيرك بمبالغها ومرتجعاتها.", "img/reports.jpg","تقارير تاجر"],
+ ["راجع الربحية","التقارير ← تقرير الربحية: هامش الربح بالإجمالي وبالتفصيل."],
+ ["راجع المرتجعات","التقارير ← تقرير المرتجعات لمتابعة نسب الإرجاع وأسبابها."]],
+ r:"قرارات التسعير والشراء مبنية على أرقام مبيعات وربح حقيقية.", rel:["inventory-reports","export-print","dashboard"]},
+{s:"inventory-reports", c:"reports", t:"تقارير المخزون وتحليل ABC", kw:"تقارير مخزون جرد ABC حركة أصناف راكد", i:"تقارير المخزون تعرض أرصدة أصنافك وقيمتها في كل مخزن، وتحليل ABC يرتب الأصناف حسب أهميتها الحركية والمالية.", steps:[
+ ["افتح تقارير المخزون","التقارير ← تقارير المخزون: الأصناف وكمياتها وقيمتها، مع فلاتر بالمخزن والتصنيف."],
+ ["حلّل ABC","التقارير ← تحليل ABC وحركة المخزون: الأصناف الأعلى قيمة وحركة مقابل الراكدة."],
+ ["اطبع أو صدّر","من معاينة أي تقرير اطبعه أو صدّره Excel منسقًا."]],
+ r:"تعرف أين أموالك محبوسة في المخزون وأي صنف يستحق التركيز أو التصفية.", rel:["product-movements","sales-reports","export-print"]},
+{s:"financial-reports", c:"reports", t:"التقارير المالية والميزانية العمومية", kw:"ميزانية عمومية قوائم مالية تدفقات نقدية خزينة محاسبة", i:"قوائمك المالية جاهزة في أي وقت: الميزانية العمومية، تقارير المحاسبة، التدفقات النقدية، والخزينة — كلها من قيودك نفسها.", steps:[
+ ["الميزانية العمومية","التقارير ← الميزانية العمومية: الأصول والالتزامات وحقوق الملكية في تاريخ تختاره."],
+ ["التدفقات والخزينة","التقارير ← قائمة التدفقات النقدية وتقرير الخزينة والتدفق النقدي لمتابعة السيولة الداخلة والخارجة."],
+ ["تقارير المحاسبة","التقارير ← تقارير المحاسبة لملخصات الحسابات والقيود بأي فترة."]],
+ r:"قوائم مالية متوازنة دائمًا لأنها تُبنى لحظيًا من دفترك، جاهزة للمحاسب أو البنك.", rel:["ledger-trial","journal","export-print"]},
+{s:"party-reports", c:"reports", t:"تقارير العملاء والموردين", kw:"تقارير عملاء موردين مستحقات أرصدة آجال", i:"تقارير الطرفين تعرض أرصدة كل عملائك ومورديك ومستحقاتهم في شاشة واحدة للمتابعة والتحصيل.", steps:[
+ ["افتح التقرير","التقارير ← تقارير العملاء (أو تقارير الموردين)."],
+ ["راجع الأرصدة","كل طرف برصيده المستحق وحركته في الفترة، مع إجماليات واضحة."],
+ ["تابع التحصيل","حدد من عليه مستحقات أكبر أو أقدم وابدأ المتابعة من ملف الطرف مباشرة."]],
+ r:"لا مستحق يضيع في الزحام: كل الأرصدة أمامك مرتبة وواضحة.", rel:["customer-profile","supplier-profile","sales-reports"]},
+{s:"vat", c:"reports", t:"إقرار ضريبة القيمة المضافة", kw:"ضريبة قيمة مضافة إقرار ضريبي فترة مبيعات مشتريات", i:"إقرار القيمة المضافة يجمع ضريبة مبيعاتك ومشترياتك لأي فترة من فواتيرك مباشرة، جاهزًا للمراجعة والتقديم.", steps:[
+ ["افتح الإقرار","التقارير ← إقرار ضريبة القيمة المضافة."],
+ ["اختر الفترة","حدد فترة الإقرار فيعرض النظام مبيعات ومشتريات الفترة وضريبة كل منهما وصافي المستحق أو المسترد."],
+ ["راجع وصدّر","راجع الأرقام مقابل تقارير المبيعات والمشتريات، ثم صدّر الإقرار أو اطبعه."]],
+ r:"إقرارك مبني على فواتيرك الفعلية دون تجميع يدوي أو أخطاء نسخ.", rel:["sales-reports","financial-reports"]},
+{s:"export-print", c:"reports", t:"طباعة وتصدير التقارير", kw:"تصدير اكسل طباعة تقرير معاينة مشاركة", i:"كل تقرير له معاينة بنفس شكل الطباعة، والتصدير والطباعة يعيشان داخل المعاينة نفسها.", steps:[
+ ["افتح معاينة التقرير","من أي تقرير اضغط زر المعاينة والطباعة الخاص به."],
+ ["اضبط الشكل","اختر حجم الورق وحجم خط الورقة، وأخفِ أي أعمدة لا تريدها من إعدادات المعاينة — تبقى رؤوسها بخانات فارغة في الطباعة والتصدير."],
+ ["اطبع أو صدّر","اطبع مباشرة أو صدّر ملف Excel منسقًا وملونًا بجدول عربي كامل التنسيق."]],
+ r:"تقاريرك تخرج بشكل احترافي ثابت مهما كان من يطبعها أو يصدّرها.", rel:["print-invoice","printing","sales-reports"]},
+/* ===== الإعدادات والتخصيص ===== */
+{s:"users-roles", c:"settings", t:"المستخدمون والأدوار والصلاحيات", kw:"مستخدمون أدوار صلاحيات موظفون دخول تخصيص عرض", i:"أضف مستخدمًا لكل موظف، واربطه بدور يحدد ما يستطيع فتحه وفعله — وما يراه أصلًا في القوائم.", steps:[
+ ["أضف مستخدمًا","المستخدمون ← المستخدمون ← «إضافة»: الاسم واسم الدخول وكلمة المرور والدور."],
+ ["عرّف الأدوار","المستخدمون ← الأدوار: أنشئ دورًا (كاشير، محاسب، مدير مخزن...) وحدد صلاحياته لكل قسم: عرض وإضافة وتعديل وحذف."],
+ ["خصّص العرض","داخل محرر الدور، «تخصيص العرض» يخفي عناصر عن هذا الدور للعرض فقط — المنع الحقيقي يبقى من الصلاحيات."],
+ ["احفظ وجرّب","سجّل الدخول بحساب تجريبي من الدور الجديد للتأكد أن ما يراه هو المطلوب بالضبط."]],
+ r:"كل موظف يعمل في مساحته فقط، وبياناتك محمية من العبث أو الفضول.", rel:["activity-log","first-account","salaries"]},
+{s:"templates", c:"settings", t:"قوالب الفواتير والمستندات", kw:"قوالب فواتير مستندات تصميم طباعة شعار حقول", i:"تحكم في شكل مستنداتك المطبوعة: قوالب فواتير جاهزة بتصميمات متعددة، وقوالب للمستندات وسندات التحويل، وكلها بأسمائها فقط تختار منها ما يناسبك.", steps:[
+ ["افتح القوالب","القوالب ← قوالب الفواتير (أو قوالب المستندات / قوالب التحويل بين المخازن).", "img/customize.jpg","القوالب والتخصيص"],
+ ["اختر قالبًا وعدّل عناصره","فعّل أو أخفِ العناصر: الشعار، بيانات التواصل، الحقول، وملخص حساب العميل أسفل الفاتورة إن أردته."],
+ ["عاين قبل الاعتماد","افتح معاينة أي فاتورة لترى القالب بشكله النهائي قبل طباعته للعملاء."]],
+ r:"مستنداتك بهوية نشاطك وشكل ثابت في كل طباعة وبأي قالب تختاره.", rel:["print-invoice","printing","company-settings"]},
+{s:"numbering", c:"settings", t:"إعدادات الترقيم", kw:"ترقيم أرقام فواتير بادئة تسلسل بداية", i:"كل مستند في TAGER مرقم تلقائيًا بتسلسل لا يتكرر. من إعدادات الترقيم تضبط بادئات وأرقام بدء كل نوع مستند.", steps:[
+ ["افتح إعدادات الترقيم","الإعدادات ← إعدادات الترقيم."],
+ ["اضبط كل نوع","لكل مستند (فواتير بيع وشراء ومرتجعات...) بادئة ورقم بدء — التسلسل بعدها تلقائي ومتصاعد."],
+ ["احفظ","تُطبق الإعدادات على المستندات الجديدة فقط، ولا تتغير أرقام الصادرة قبلًا."]],
+ r:"ترقيم متسق وآمن حتى مع العمل على أكثر من جهاز عبر المزامنة — لا رقم مكررًا أبدًا.", rel:["create-invoice","sync"]},
+{s:"printing", c:"settings", t:"إعدادات الطباعة وحجم الورق", kw:"طباعة حجم ورق مقاس مخصص حراري خط ورقة طابعة", i:"اختر مقاس كل طباعة: A4 للفواتير والتقارير، حراري لإيصالات نقطة البيع، أو مقاس مخصص واحد تضبطه للنظام كله.", steps:[
+ ["اختر المقاس من المعاينة","في معاينة أي مستند أو تقرير اختر حجم الورق من منتقي المقاسات الموحد."],
+ ["عرّف مقاسك المخصص","أدخل العرض والارتفاع بالمليمتر (من ٢٠ إلى ١٠٠٠) — يُحفظ مقاسك ويظهر خيارًا دائمًا في كل المعاينات."],
+ ["اضبط حجم خط الورقة","اسحب منزلق حجم الخط لتكبر أو تصغر خط الورقة كلها متناسقًا حول الحجم الذي كتبته."]],
+ r:"مقاس وخط موحدان على كل المستندات والتقارير، بلا مفاجآت بين طابعة وأخرى.", rel:["print-invoice","templates","export-print"]},
+{s:"customization", c:"settings", t:"تخصيص النظام والمظهر", kw:"تخصيص مظهر ثيم لون إعدادات نظام تفعيل خصائص", i:"شكّل TAGER على نشاطك: مظهر الواجهة ولونها، وتفعيل أو إخفاء خصائص لا تستخدمها، وترتيب ما تراه.", steps:[
+ ["افتح التخصيص","الإعدادات ← تخصيص النظام، والمظهر من الإعدادات ← إعدادات النظام.", "img/customize.jpg","تخصيص النظام"],
+ ["اضبط ما يناسبك","غيّر الثيم واللون الرئيسي، وفعّل أو أوقف الخصائص الاختيارية حسب طبيعة عملك."],
+ ["احفظ","تُطبق تغييراتك فورًا على واجهتك، ولا تمس بياناتك أو حساباتك."]],
+ r:"نفس النظام القوي، بشكل ومساحة عمل تناسب نشاطك أنت.", rel:["company-settings","users-roles"]},
+{s:"data-import", c:"settings", t:"استيراد البيانات من Excel", kw:"استيراد بيانات اكسل نقل أصناف عملاء موردين تصنيفات بداية", i:"ابدأ بسرعة: استورد تصنيفاتك وأصنافك وعملاءك ومورديك من ملفات Excel بقوالب جاهزة ومعاينة قبل التنفيذ.", steps:[
+ ["افتح الاستيراد","الإعدادات ← استيراد البيانات واختر نوع البيانات."],
+ ["نزّل القالب وعبّئه","نزّل قالب Excel الخاص بالنوع، وعبّئ صفوفك — الأصناف والعملاء والموردون تدعم أعمدة رصيد وكمية افتتاحية اختيارية (بحد أقصى ١٠٠٠ صف)."],
+ ["ارفع وعاين","ارفع الملف فتظهر معاينة موسومة: ما سيُضاف وما فيه خطأ أو تكرار (المنتجات تُكتشف مكررة بالكود أو الاسم)."],
+ ["نفّذ","بعد مراجعة المعاينة اضغط تنفيذ — تُستورد السليم فقط وتظهر نتيجة مفصلة."]],
+ r:"بياناتك القديمة داخل TAGER في دقائق، دون إدخال يدوي ودون فوضى التكرارات.", rel:["add-product","add-customer","opening-balances"]},
+/* ===== النسخ الاحتياطي والمزامنة ===== */
+{s:"cloud-backup", c:"backup", t:"النسخ الاحتياطي السحابي (جوجل درايف)", kw:"نسخ احتياطي سحابي جوجل درايف ربط حساب حماية بيانات", i:"اربط حساب جوجل مرة واحدة، وسيحتفظ TAGER بنسخة محدثة من بياناتك على درايف — ملف واحد باسم tager-backup.db داخل مجلد باسم حسابك — تتحدث تلقائيًا مع كل تغيير.", steps:[
+ ["اربط حسابك","الإعدادات ← النسخ الاحتياطي والاستعادة ← ربط حساب جوجل وسجّل الدخول بحسابك."],
+ ["اترك الباقي للنظام","كل تغيير في بياناتك يرفع النسخة تلقائيًا، وعند إغلاق البرنامج يعرض حفظ نسخة أخيرة قبل الخروج."],
+ ["تحقق في أي وقت","حالة آخر نسخة وتاريخها ظاهرة في صفحة النسخ الاحتياطي وفي تنبيهات الجرس إذا تأخر رفع ما."]],
+ r:"حتى لو تعطل الجهاز أو أُعيد تثبيت ويندوز، بياناتك محفوظة بحسابك وتُستعاد كاملة.", rel:["restore","local-backup","dashboard"]},
+{s:"restore", c:"backup", t:"استعادة نسخة احتياطية", kw:"استعادة نسخة استرجاع بيانات ملف جوجل", i:"استعد بياناتك من نسختك السحابية على جوجل أو من ملف محلي عندك — وقبل أي استعادة يكتب النظام نسخة أمان من بياناتك الحالية تلقائيًا.", steps:[
+ ["اختر مصدر الاستعادة","من صفحة النسخ الاحتياطي والاستعادة، أو من شاشة تسجيل الدخول، اختر الاستعادة من جوجل أو من ملف محلي."],
+ ["عند اختيار ملف محلي: اربط جوجل","مباشرة بعد اختيار الملف تظهر نافذة ربط حساب جوجل داخل خطوات الاستعادة نفسها (أي حساب، حتى جديد). إن وجدت نسخة سحابية للحساب يعرض النظام النسختين بتاريخيهما وحجميهما لتختار: بيانات هذا الجهاز أم نسخة جوجل."],
+ ["أكّد وانتظر إعادة التشغيل","تُكتب نسخة الأمان أولًا، ثم تُستبدل البيانات ويُعاد تشغيل البرنامج على بياناتك المستعادة."]],
+ r:"تعود بياناتك كما كانت وقت النسخة، ونسخة أمان من حالتك قبل الاستعادة محفوظة إن احتجتها.", rel:["cloud-backup","local-backup"]},
+{s:"local-backup", c:"backup", t:"النسخة المحلية اليومية وزر المزامنة", kw:"نسخة محلية يومية مجلد قرص مزامنة فورية", i:"بجانب السحابة، يحفظ TAGER نسخة محلية يومية على قرص تختاره عند التثبيت — يفضّل خارج قرص النظام C — ملفًا واحدًا لكل يوم يُحدّث مع كل تغيير.", steps:[
+ ["اعرف مكان نسختك","مسار النسخ المحلية اخترته أثناء التثبيت في صفحة «مكان حفظ النسخ الاحتياطية» (مثال: F:\\tager) وداخله مجلدات بالسنة والشهر."],
+ ["انسخ فورًا عند الحاجة","زر «مزامنة» في القائمة الجانبية يحفظ نسخة فورية الآن ويعرض وقت آخر نسخة."]],
+ r:"طبقة حماية إضافية على جهازك نفسه، تعمل حتى دون أي إنترنت.", rel:["cloud-backup","restore"]},
+{s:"sync", c:"backup", t:"المزامنة بين الأجهزة (Tailscale)", kw:"مزامنة أجهزة رئيسي فرعي ربط كود Tailscale شبكة", i:"شغّل TAGER على جهازين أو أكثر بنفس البيانات لحظيًا: جهاز رئيسي واحد يستضيف البيانات، وأجهزة فرعية تتصل به بأمان عبر Tailscale.", steps:[
+ ["جهّز Tailscale","يُثبَّت Tailscale مع البرنامج — سجّل الدخول بنفس الحساب على الجهازين حتى يظهر لكل جهاز عنوانه (100.x).", "img/ts3.jpg","المزامنة في تاجر عبر Tailscale"],
+ ["من الجهاز الرئيسي","الإعدادات ← المزامنة عن بُعد: فعّل هذا الجهاز رئيسيًا وستظهر بيانات الربط: عنوانه وكود الربط."],
+ ["من الجهاز الفرعي","على شاشة التفعيل أو من إعدادات المزامنة اختر «ربط كجهاز فرعي» وأدخل عنوان الرئيسي وكود الربط — تتم مزامنة كاملة ثم لحظية مع كل تغيير."],
+ ["أدر أجهزتك","من الرئيسي راجع الأجهزة المرتبطة: «فصل الجهاز» يوقفها مؤقتًا ويمكن إعادتها، و«حذف الجهاز» يزيلها نهائيًا ويحرر مقعدها فورًا."]],
+ r:"فواتير الجهازين تظهر على الاثنين فور حفظها. ملحوظة: استعادة نسخة على الجهاز الرئيسي تلغي ربط الفرعيات — تعيد ربطها بالكود الجديد.", rel:["activate","numbering","cloud-backup"]},
+{s:"period-close", c:"backup", t:"إقفال الفترات", kw:"إقفال فترة جزئي كلي أرشيف سنة مالية قطع", i:"أقفل الفترات القديمة لتبقى حساباتها ثابتة: إقفال كلي لكل ما سبق، أو جزئي بتاريخ قطع يبقي آخر شهورك حية وقابلة للتعديل.", steps:[
+ ["افتح الإقفال","الإعدادات ← النسخ الاحتياطي والاستعادة ← بطاقة إقفال الفترات (من نسخة الكمبيوتر)."],
+ ["اختر نوع الإقفال","كلي: يقفل كل شيء حتى اليوم. جزئي: اختر تاريخ قطع (أو جاهزًا: إبقاء آخر ٤ أو ٥ أو ٦ شهور) فيُرحّل ما قبله للأرشيف وتبقى الفترة بعده حية."],
+ ["راجع الأرشيف وقت الحاجة","المستندات المقفولة محفوظة للعرض والمراجعة من الأرشيف دون تعديل، وأرصدتها الافتتاحية تنتقل للفترة الجديدة بقيد افتتاحي واحد."]],
+ r:"فتراتك القديمة مقفولة وآمنة، وعملك الحالي خفيف وسريع مهما كبرت بياناتك.", rel:["opening-balances","local-backup"]}
+];
+
+/* ================= rendering ================= */
+var bySlug = {};
+ARTICLES.forEach(function(a){ bySlug[a.s] = a; });
+var flat = [];
+CATS.forEach(function(c){ ARTICLES.forEach(function(a){ if(a.c === c.id) flat.push(a); }); });
+function catOf(a){ for (var i=0;i<CATS.length;i++) if (CATS[i].id===a.c) return CATS[i]; return CATS[0]; }
+function shot(src, title){
+  return '<figure><div class="shot-window"><div class="win-bar"><i></i><i></i><i></i><em>'+title+'</em></div><div class="win-body"><img src="'+src+'" alt="'+title+'" loading="lazy"></div></div></figure>';
+}
+function renderHome(){
+  var html = "";
+  CATS.forEach(function(c, ci){
+    var arts = ARTICLES.filter(function(a){ return a.c===c.id; });
+    if (!arts.length) return;
+    html += '<section class="g-cat"><h2><span class="no">'+(ci+1)+'</span>'+c.t+'</h2><p class="cdesc">'+c.d+'</p><ul class="g-links">';
+    arts.forEach(function(a){ html += '<li><a href="#/a/'+a.s+'">'+ARROW+a.t+'</a></li>'; });
+    html += '</ul></section>';
+  });
+  document.getElementById("catList").innerHTML = html;
+}
+function renderSide(active){
+  var html = "";
+  CATS.forEach(function(c){
+    var arts = ARTICLES.filter(function(a){ return a.c===c.id; });
+    if (!arts.length) return;
+    html += '<h4>'+c.t+'</h4>';
+    arts.forEach(function(a){ html += '<a href="#/a/'+a.s+'"'+(a.s===active?' class="active"':'')+'>'+a.t+'</a>'; });
+  });
+  document.getElementById("sideNav").innerHTML = html;
+}
+function renderArticle(slug){
+  var a = bySlug[slug];
+  if (!a) return false;
+  var c = catOf(a);
+  document.title = a.t + " | دليل TAGER";
+  var meta = document.querySelector('meta[name="description"]');
+  if (meta) meta.setAttribute("content", a.i);
+  var html = '<nav class="crumb"><a href="guide.html">دليل TAGER</a><span>/</span><span>'+c.t+'</span><span>/</span><b>'+a.t+'</b></nav>';
+  html += '<h1>'+a.t+'</h1><p class="intro">'+a.i+'</p>';
+  a.steps.forEach(function(st, i){
+    html += '<h3 class="step-h"><span class="sn">'+(i+1)+'</span>الخطوة '+(i+1)+' — '+st[0]+'</h3><p>'+st[1]+'</p>';
+    if (st[2]) html += shot(st[2], st[3] || a.t);
+  });
+  html += '<div class="result"><h3>النتيجة</h3><p>'+a.r+'</p></div>';
+  if (a.rel && a.rel.length){
+    html += '<div class="related"><h3>مواضيع ذات صلة</h3><ul>';
+    a.rel.forEach(function(rs){ var ra = bySlug[rs]; if (ra) html += '<li><a href="#/a/'+ra.s+'">'+ARROW+ra.t+'</a></li>'; });
+    html += '</ul></div>';
+  }
+  var idx = flat.indexOf(a);
+  var prev = idx > 0 ? flat[idx-1] : null;
+  var next = idx >= 0 && idx < flat.length-1 ? flat[idx+1] : null;
+  html += '<div class="pn">';
+  html += prev ? '<a href="#/a/'+prev.s+'"><small>المقال السابق</small><b>'+prev.t+'</b></a>' : '<a class="disabled" href="#"><small>المقال السابق</small><b>—</b></a>';
+  html += next ? '<a class="nx" href="#/a/'+next.s+'"><small>المقال التالي</small><b>'+next.t+'</b></a>' : '<a class="disabled nx" href="#"><small>المقال التالي</small><b>—</b></a>';
+  html += '</div>';
+  document.getElementById("artBody").innerHTML = html;
+  renderSide(slug);
+  return true;
+}
+function route(){
+  var h = location.hash || "";
+  var m = h.match(/^#\/a\/([a-z0-9-]+)$/);
+  var home = document.getElementById("homeView");
+  var art = document.getElementById("articleView");
+  if (m && renderArticle(m[1])){
+    home.style.display = "none"; art.classList.add("open");
+  } else {
+    art.classList.remove("open"); home.style.display = "";
+    document.title = "دليل TAGER | شرح برنامج تاجر قسمًا قسمًا";
+  }
+  window.scrollTo(0,0);
+  document.getElementById("sideNav").classList.remove("open");
+}
+/* search */
+var sIn = document.getElementById("searchInput"), sRes = document.getElementById("searchResults");
+function norm(t){ return (t||"").replace(/[ً-ٰٟ]/g,"").replace(/إ|أ|آ/g,"ا").replace(/ة/g,"ه").replace(/ى/g,"ي").toLowerCase(); }
+sIn.addEventListener("input", function(){
+  var q = norm(sIn.value.trim());
+  if (!q){ sRes.classList.remove("open"); sRes.innerHTML=""; return; }
+  var hits = ARTICLES.filter(function(a){ return norm(a.t+" "+a.kw+" "+catOf(a).t).indexOf(q) > -1; }).slice(0, 9);
+  if (!hits.length){ sRes.innerHTML = '<div class="none">لا توجد نتائج مطابقة — جرّب كلمة أبسط مثل «فاتورة» أو «مخزون».</div>'; }
+  else {
+    sRes.innerHTML = hits.map(function(a){ return '<a href="#/a/'+a.s+'"><span class="cat">'+catOf(a).t+'</span><span class="ttl">'+a.t+'</span></a>'; }).join("");
+  }
+  sRes.classList.add("open");
+});
+sRes.addEventListener("click", function(){ sRes.classList.remove("open"); });
+document.addEventListener("click", function(e){ if (!e.target.closest(".search-box")) sRes.classList.remove("open"); });
+/* chrome */
+document.getElementById("burger").addEventListener("click", function(){ document.getElementById("mobileMenu").classList.toggle("open"); });
+document.getElementById("sideToggle").addEventListener("click", function(){ document.getElementById("sideNav").classList.toggle("open"); });
+window.addEventListener("hashchange", route);
+renderHome();
+route();
+</script>
+</body>
+</html>
