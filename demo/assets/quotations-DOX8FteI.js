@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-DREnUpxT.js";import{n as t}from"./sales-documents-DtxtbtOE.js";var n=e(),r=()=>(0,n.jsx)(t,{mode:`quotation`});export{r as component};

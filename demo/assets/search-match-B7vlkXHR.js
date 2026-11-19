@@ -1,0 +1,1 @@
+function e(e){return e.trim().toLocaleLowerCase(`ar`)}function t(t){let n=e(t);return n?n.split(/\s+/).filter(Boolean):[]}function n(n,r){let i=t(r);if(i.length===0)return!0;let a=e(n);return i.every(e=>a.includes(e))}export{n as t};
