@@ -1,0 +1,1 @@
+import{n as e}from"./roles-module-DKQi1JMS.js";var t=e;export{t as component};
