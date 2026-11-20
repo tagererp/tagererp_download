@@ -1,0 +1,1 @@
+import{n as e}from"./roles-module-B06vw-u6.js";var t=e;export{t as component};
