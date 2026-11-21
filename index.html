@@ -308,7 +308,7 @@ footer p{font-size:.93rem;line-height:1.8}
       <p class="lead">أدر حساباتك، مبيعاتك، مشترياتك، مخزونك، عملاءك وموردينك من نظام واحد، يعمل على جهازك ويمنحك تحكمًا كاملًا في نشاطك.</p>
       <div class="hero-cta">
         <a class="btn btn-primary" href="https://github.com/tagererp/TagerERP_download/releases/download/v1.1.0/Tager.ERP_1.1.0_x64-setup.exe" data-download><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 20h16"/></svg> تحميل TAGER</a>
-        <a class="btn btn-ghost" href="tour.html" id="tryDemoBtn"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M9 20.5h6M12 17v3.5"/></svg> جرّب النظام الآن</a>
+        <a class="btn btn-ghost" href="demo/" id="tryDemoBtn"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M9 20.5h6M12 17v3.5"/></svg> جرّب النظام الآن</a>
         <a class="btn btn-ghost" href="#modules">استكشف مميزات النظام</a>
       </div>
       <div class="hero-meta">
@@ -835,8 +835,38 @@ footer p{font-size:.93rem;line-height:1.8}
 })();
 </script>
 <style>
-
+.demo-chooser{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;background:rgba(24,18,14,.55);padding:18px}
+.demo-chooser.open{display:flex}
+.demo-chooser-card{background:#fff;border-radius:20px;max-width:430px;width:100%;padding:28px 24px 22px;text-align:center;box-shadow:0 30px 60px -20px rgba(0,0,0,.35)}
+.demo-chooser-card h3{font-size:1.35rem;font-weight:800;margin:0 0 6px;color:var(--ink)}
+.demo-chooser-card p{color:#6B655E;font-size:.95rem;margin:0 0 20px}
+.demo-chooser-opts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.demo-chooser-opt{display:flex;flex-direction:column;align-items:center;gap:8px;border:2px solid var(--line);border-radius:16px;padding:18px 10px 14px;text-decoration:none;color:var(--ink);font-weight:800;font-size:1.05rem;transition:border-color .15s,background .15s}
+.demo-chooser-opt small{font-weight:600;font-size:.78rem;color:#8A8378}
+.demo-chooser-opt:hover{border-color:var(--orange);background:var(--orange-soft)}
+.demo-chooser-opt svg{color:var(--orange)}
+.demo-chooser-close{margin-top:16px;background:none;border:0;color:#8A8378;font-family:inherit;font-size:.9rem;font-weight:700;cursor:pointer}
 </style>
-
+<div class="demo-chooser" id="demoChooser" role="dialog" aria-modal="true" aria-label="اختر طريقة التجربة">
+  <div class="demo-chooser-card">
+    <h3>هتجرّب النظام منين؟</h3>
+    <p>اختار النسخة المناسبة لجهازك</p>
+    <div class="demo-chooser-opts">
+      <a class="demo-chooser-opt" href="demo/?view=phone"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.8h2"/></svg> الهاتف <small>نسخة مناسبة لشاشة هاتفك</small></a>
+      <a class="demo-chooser-opt" href="demo/?view=full"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M9 20.5h6M12 17v3.5"/></svg> الكمبيوتر <small>النسخة الكاملة بكل الإمكانيات</small></a>
+    </div>
+    <button class="demo-chooser-close" id="demoChooserClose" type="button">إلغاء</button>
+  </div>
+</div>
+<script>
+(function(){
+  var btn=document.getElementById('tryDemoBtn'), ch=document.getElementById('demoChooser');
+  if(!btn||!ch) return;
+  btn.addEventListener('click',function(e){e.preventDefault();ch.classList.add('open');});
+  document.getElementById('demoChooserClose').addEventListener('click',function(){ch.classList.remove('open');});
+  ch.addEventListener('click',function(e){if(e.target===ch)ch.classList.remove('open');});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')ch.classList.remove('open');});
+})();
+</script>
 </body>
 </html>
