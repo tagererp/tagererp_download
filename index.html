@@ -183,6 +183,46 @@ h2{font-size:clamp(1.65rem,3.2vw,2.45rem);font-weight:800;line-height:1.4;letter
 .ribbon-band{position:absolute;top:15px;left:-34px;width:122px;background:#D92323;color:#fff;font-weight:800;font-size:.86rem;line-height:1.5;text-align:center;padding:3.5px 0;transform:rotate(-45deg);box-shadow:0 4px 10px rgba(217,35,35,.35);z-index:2}
 .plan.hot{border:2px solid var(--orange);position:relative}
 .plan.hot .tag{position:absolute;top:-13px;inset-inline-start:50%;transform:translateX(50%);background:var(--orange);color:#fff;font-size:.75rem;font-weight:700;padding:3px 13px;border-radius:99px;white-space:nowrap}
+/* pricing v2 — باقات بالأوبشنات (نقطة بيع/مستخدمين/أجهزة) */
+.bill-toggle{display:flex;align-items:center;justify-content:center;gap:12px;margin:4px 0 26px;flex-wrap:wrap}
+.bill-toggle .opt{font-weight:700;color:var(--mut);cursor:pointer;font-size:1.02rem;background:none;border:none;font-family:inherit;padding:4px 2px}
+.bill-toggle .opt.on{color:var(--ink)}
+.bill-toggle .save{color:var(--orange);font-weight:800;font-size:.85rem;line-height:1.2;text-align:center}
+.bill-switch{width:58px;height:30px;border-radius:99px;background:var(--orange);border:none;position:relative;cursor:pointer;flex:none;padding:0}
+.bill-switch::after{content:'';position:absolute;top:3px;inset-inline-start:4px;width:24px;height:24px;border-radius:50%;background:#fff;transition:transform .2s}
+.bill-switch.monthly::after{transform:translateX(-28px)}
+.plans3{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;text-align:start}
+.plan3{padding:28px;display:flex;flex-direction:column;gap:4px;border-inline-start:1px solid var(--line);position:relative}
+.plan3:first-child{border-inline-start:none}
+.plan3 .pname{font-size:1.28rem;font-weight:800;color:var(--ink)}
+.plan3 .pspec{color:var(--mut);font-size:.92rem;font-weight:500;line-height:1.7}
+.plan3 .pprice{font-size:2.9rem;font-weight:800;line-height:1.15;margin-top:12px;color:var(--ink)}
+.plan3 .pprice small{font-size:.9rem;color:var(--mut);font-weight:600}
+.plan3 .pper{color:var(--mut);font-size:.9rem}
+.plan3 .btn{margin-top:18px;justify-content:center}
+.plan3.hot{background:var(--orange)}
+.plan3.hot .pname,.plan3.hot .pprice{color:#fff}
+.plan3.hot .pspec,.plan3.hot .pper,.plan3.hot .pprice small{color:#FFE0D1}
+.plan3.hot .btn{background:#fff;color:#E8490F;border-color:#fff}
+.plan3 .best{position:absolute;top:0;inset-inline:0;background:var(--dark);color:#fff;text-align:center;font-size:.8rem;font-weight:800;padding:5px 0}
+.plan3.has-best{padding-top:54px}
+.plans-extra{text-align:center;color:var(--ink-2);font-weight:600;margin-top:16px;font-size:.97rem}
+.plans-extra b{color:var(--ink)}
+.cmp-wrap{margin-top:34px;overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:#fff}
+table.cmp{width:100%;border-collapse:collapse;min-width:660px}
+table.cmp th,table.cmp td{padding:13px 18px;text-align:center;border-bottom:1px solid #F0EBE4;font-size:.99rem}
+table.cmp th{font-weight:800;color:var(--ink);background:#FBF8F4}
+table.cmp td:first-child,table.cmp th:first-child{text-align:start;font-weight:600;color:var(--ink-2)}
+table.cmp tr.grp td{background:#FFF4EF;color:#E8490F;font-weight:900;text-align:start}
+table.cmp .y{color:var(--orange);font-weight:900;font-size:1.1rem}
+table.cmp .n{color:#CFC8BC;font-weight:700}
+table.cmp .v{font-weight:800;color:var(--ink)}
+.life-band{margin-top:24px;background:var(--dark);color:#fff;border-radius:var(--radius);padding:24px 28px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.life-band .lt{font-size:1.18rem;font-weight:900}
+.life-band .lt span{display:block;color:#FFB59F;font-weight:600;font-size:.92rem;margin-top:3px}
+.life-band .lp{font-size:1.9rem;font-weight:800;white-space:nowrap}
+.life-band .lp small{font-size:.85rem;color:#FFB59F;font-weight:600}
+@media(max-width:900px){.plans3{grid-template-columns:1fr}.plan3{border-inline-start:none;border-top:1px solid var(--line)}.plan3:first-child{border-top:none}}
 /* cta band */
 .cta-band{background:linear-gradient(135deg,#FF6A35,#F0440F);border-radius:26px;padding:56px 40px;text-align:center;color:#fff;box-shadow:0 30px 60px -28px rgba(240,68,15,.55)}
 .cta-band h2{color:#fff}
@@ -308,7 +348,7 @@ footer p{font-size:.93rem;line-height:1.8}
       <p class="lead">أدر حساباتك، مبيعاتك، مشترياتك، مخزونك، عملاءك وموردينك من نظام واحد، يعمل على جهازك ويمنحك تحكمًا كاملًا في نشاطك.</p>
       <div class="hero-cta">
         <a class="btn btn-primary" href="https://github.com/tagererp/TagerERP_download/releases/download/v1.1.0/Tager.ERP_1.1.0_x64-setup.exe" data-download><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 20h16"/></svg> تحميل TAGER</a>
-        <a class="btn btn-ghost" href="demo/" id="tryDemoBtn"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M9 20.5h6M12 17v3.5"/></svg> جرّب النظام الآن</a>
+        <a class="btn btn-ghost" href="tour.html" id="tryDemoBtn"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M9 20.5h6M12 17v3.5"/></svg> جرّب النظام الآن</a>
         <a class="btn btn-ghost" href="#modules">استكشف مميزات النظام</a>
       </div>
       <div class="hero-meta">
@@ -664,20 +704,68 @@ footer p{font-size:.93rem;line-height:1.8}
   </div>
 </section>
 
-<!-- ================= PRICING (preserved) ================= -->
+<!-- ================= PRICING — باقات بالأوبشنات ================= -->
 <section class="sec" id="pricing">
   <div class="wrap">
     <div class="sec-head center reveal">
       <span class="sec-tag">الاشتراك والباقات</span>
-      <h2>اختر المدة المناسبة لشغلك</h2>
-      <p class="sec-sub">كل الباقات تشمل النظام كاملًا بكل أقسامه — الفرق في مدة الترخيص فقط. للاشتراك تواصل معنا مباشرة.</p>
+      <h2>اختر الباقة المناسبة لشغلك</h2>
+      <p class="sec-sub">كل الباقات تشمل النظام المحاسبي كاملًا — الفرق في نقطة البيع وعدد المستخدمين والأجهزة. للاشتراك تواصل معنا مباشرة.</p>
     </div>
-    <div class="plans reveal">
-      <div class="plan"><span class="dur">شهر</span><span class="price num">99 <small>جنيه</small></span><button class="btn btn-primary" data-contact>اشترك الآن</button></div>
-      <div class="plan has-ribbon"><span class="ribbon-band">خصم</span><span class="dur">3 شهور</span><span class="price num">269 <small>جنيه</small></span><button class="btn btn-primary" data-contact>اشترك الآن</button></div>
-      <div class="plan has-ribbon"><span class="ribbon-band">خصم</span><span class="dur">6 شهور</span><span class="price num">549 <small>جنيه</small></span><button class="btn btn-primary" data-contact>اشترك الآن</button></div>
-      <div class="plan has-ribbon"><span class="ribbon-band">خصم</span><span class="dur">سنة</span><span class="price num">1099 <small>جنيه</small></span><button class="btn btn-primary" data-contact>اشترك الآن</button></div>
-      <div class="plan hot"><span class="tag">الأفضل قيمة</span><span class="dur">مدى الحياة</span><span class="price num">4799 <small>جنيه</small></span><button class="btn btn-dark" data-contact>اشترك الآن</button></div>
+    <div class="bill-toggle reveal">
+      <button class="opt" id="billM" type="button">شهري</button>
+      <button class="bill-switch" id="billSwitch" type="button" aria-label="التبديل بين الدفع الشهري والسنوي"></button>
+      <button class="opt on" id="billY" type="button">سنوي</button>
+      <span class="save">خصم 20%<br>على السنوي</span>
+    </div>
+    <div class="plans3 reveal">
+      <div class="plan3" data-m="124" data-y="99" data-mt="يُدفع شهريًا" data-yt="يُدفع سنويًا 1,190 ج.م">
+        <span class="pname">الأساسية</span>
+        <span class="pspec">جهاز واحد — مستخدم واحد — من غير نقطة بيع</span>
+        <span class="pprice num"><span class="p-amount">99</span> <small>ج.م / شهريًا</small></span>
+        <span class="pper">يُدفع سنويًا 1,190 ج.م</span>
+        <button class="btn btn-primary" data-contact>اشترك الآن</button>
+      </div>
+      <div class="plan3" data-m="249" data-y="199" data-mt="يُدفع شهريًا" data-yt="يُدفع سنويًا 2,390 ج.م">
+        <span class="pname">المتقدمة</span>
+        <span class="pspec">3 أجهزة — 3 مستخدمين — نقطة بيع مفتوحة</span>
+        <span class="pprice num"><span class="p-amount">199</span> <small>ج.م / شهريًا</small></span>
+        <span class="pper">يُدفع سنويًا 2,390 ج.م</span>
+        <button class="btn btn-primary" data-contact>اشترك الآن</button>
+      </div>
+      <div class="plan3 hot has-best" data-m="374" data-y="299" data-mt="يُدفع شهريًا" data-yt="يُدفع سنويًا 3,590 ج.م">
+        <span class="best">الأكثر مبيعًا</span>
+        <span class="pname">الشاملة</span>
+        <span class="pspec">5 أجهزة — مستخدمين بلا حد — نقطة بيع مفتوحة</span>
+        <span class="pprice num"><span class="p-amount">299</span> <small>ج.م / شهريًا</small></span>
+        <span class="pper">يُدفع سنويًا 3,590 ج.م</span>
+        <button class="btn btn-dark" data-contact>اشترك الآن</button>
+      </div>
+    </div>
+    <p class="plans-extra reveal">الترقية بين الباقات في أي وقت بفرق السعر بس — والجهاز الإضافي فوق باقتك <b>+590 ج.م / سنة</b></p>
+    <div class="cmp-wrap reveal">
+      <table class="cmp">
+        <tr><th>قارن بين الباقات</th><th>الأساسية</th><th>المتقدمة</th><th>الشاملة</th></tr>
+        <tr class="grp"><td colspan="4">إدارة المبيعات</td></tr>
+        <tr><td>فواتير البيع والشراء والمرتجعات</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+        <tr><td>نقطة البيع</td><td class="n">✗</td><td class="y">✓</td><td class="y">✓</td></tr>
+        <tr><td>المخزون ومتعدد المخازن والتحويلات</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+        <tr><td>الحسابات ودفتر الأستاذ والتقارير</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+        <tr><td>النسخ الاحتياطي المحلي والسحابي</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+        <tr class="grp"><td colspan="4">المستخدمين والأجهزة</td></tr>
+        <tr><td>عدد المستخدمين</td><td class="v">1</td><td class="v">3</td><td class="v">بلا حد</td></tr>
+        <tr><td>صلاحيات وأدوار للمستخدمين</td><td class="n">✗</td><td class="y">✓</td><td class="y">✓</td></tr>
+        <tr><td>عدد الأجهزة</td><td class="v">1</td><td class="v">3</td><td class="v">5</td></tr>
+        <tr><td>مزامنة بين الأجهزة</td><td class="n">✗</td><td class="y">✓</td><td class="y">✓</td></tr>
+        <tr><td>الدعم الفني</td><td class="v">عادي</td><td class="v">أولوية</td><td class="v">أولوية قصوى</td></tr>
+      </table>
+    </div>
+    <div class="life-band reveal">
+      <div class="lt">مدى الحياة — بمزايا المتقدمة<span>جهاز واحد + نقطة بيع + 3 مستخدمين… دفعة واحدة من غير اشتراكات</span></div>
+      <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap">
+        <span class="lp num">5,999 <small>ج.م مرة واحدة</small></span>
+        <button class="btn btn-primary" data-contact>اشترك الآن</button>
+      </div>
     </div>
   </div>
 </section>
@@ -788,6 +876,26 @@ footer p{font-size:.93rem;line-height:1.8}
   function openModal(id){ document.getElementById(id).classList.add('open'); document.body.style.overflow = 'hidden'; }
   function closeModals(){ document.querySelectorAll('.modal.open').forEach(function(m){ m.classList.remove('open'); }); document.body.style.overflow = ''; }
   document.querySelectorAll('[data-contact]').forEach(function(b){ b.addEventListener('click', function(){ openModal('contactModal'); }); });
+  /* مفتاح شهري/سنوي — قسم الباقات */
+  (function(){
+    var sw = document.getElementById('billSwitch');
+    if(!sw) return;
+    var bM = document.getElementById('billM'), bY = document.getElementById('billY');
+    var cards = document.querySelectorAll('.plan3');
+    function setMode(mode){
+      sw.classList.toggle('monthly', mode === 'm');
+      bM.classList.toggle('on', mode === 'm');
+      bY.classList.toggle('on', mode === 'y');
+      cards.forEach(function(c){
+        c.querySelector('.p-amount').textContent = mode === 'm' ? c.getAttribute('data-m') : c.getAttribute('data-y');
+        c.querySelector('.pper').textContent = mode === 'm' ? c.getAttribute('data-mt') : c.getAttribute('data-yt');
+      });
+    }
+    sw.addEventListener('click', function(){ setMode(sw.classList.contains('monthly') ? 'y' : 'm'); });
+    bM.addEventListener('click', function(){ setMode('m'); });
+    bY.addEventListener('click', function(){ setMode('y'); });
+    setMode('y');
+  })();
   document.querySelectorAll('[data-close]').forEach(function(b){ b.addEventListener('click', closeModals); });
   addEventListener('keydown', function(e){ if(e.key === 'Escape') closeModals(); });
 
@@ -835,38 +943,8 @@ footer p{font-size:.93rem;line-height:1.8}
 })();
 </script>
 <style>
-.demo-chooser{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;background:rgba(24,18,14,.55);padding:18px}
-.demo-chooser.open{display:flex}
-.demo-chooser-card{background:#fff;border-radius:20px;max-width:430px;width:100%;padding:28px 24px 22px;text-align:center;box-shadow:0 30px 60px -20px rgba(0,0,0,.35)}
-.demo-chooser-card h3{font-size:1.35rem;font-weight:800;margin:0 0 6px;color:var(--ink)}
-.demo-chooser-card p{color:#6B655E;font-size:.95rem;margin:0 0 20px}
-.demo-chooser-opts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.demo-chooser-opt{display:flex;flex-direction:column;align-items:center;gap:8px;border:2px solid var(--line);border-radius:16px;padding:18px 10px 14px;text-decoration:none;color:var(--ink);font-weight:800;font-size:1.05rem;transition:border-color .15s,background .15s}
-.demo-chooser-opt small{font-weight:600;font-size:.78rem;color:#8A8378}
-.demo-chooser-opt:hover{border-color:var(--orange);background:var(--orange-soft)}
-.demo-chooser-opt svg{color:var(--orange)}
-.demo-chooser-close{margin-top:16px;background:none;border:0;color:#8A8378;font-family:inherit;font-size:.9rem;font-weight:700;cursor:pointer}
+
 </style>
-<div class="demo-chooser" id="demoChooser" role="dialog" aria-modal="true" aria-label="اختر طريقة التجربة">
-  <div class="demo-chooser-card">
-    <h3>هتجرّب النظام منين؟</h3>
-    <p>اختار النسخة المناسبة لجهازك</p>
-    <div class="demo-chooser-opts">
-      <a class="demo-chooser-opt" href="demo/?view=phone"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.8h2"/></svg> الهاتف <small>نسخة مناسبة لشاشة هاتفك</small></a>
-      <a class="demo-chooser-opt" href="demo/?view=full"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M9 20.5h6M12 17v3.5"/></svg> الكمبيوتر <small>النسخة الكاملة بكل الإمكانيات</small></a>
-    </div>
-    <button class="demo-chooser-close" id="demoChooserClose" type="button">إلغاء</button>
-  </div>
-</div>
-<script>
-(function(){
-  var btn=document.getElementById('tryDemoBtn'), ch=document.getElementById('demoChooser');
-  if(!btn||!ch) return;
-  btn.addEventListener('click',function(e){e.preventDefault();ch.classList.add('open');});
-  document.getElementById('demoChooserClose').addEventListener('click',function(){ch.classList.remove('open');});
-  ch.addEventListener('click',function(e){if(e.target===ch)ch.classList.remove('open');});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')ch.classList.remove('open');});
-})();
-</script>
+
 </body>
 </html>
