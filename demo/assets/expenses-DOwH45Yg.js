@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-DREnUpxT.js";import{t}from"./finance-transactions-module-_VwC0wUe.js";var n=e(),r=()=>(0,n.jsx)(t,{type:`expense`});export{r as component};
