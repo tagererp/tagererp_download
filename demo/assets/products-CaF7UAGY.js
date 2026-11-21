@@ -1,1 +1,0 @@
-import{t as e}from"./inventory-products-module-DYJLfsMz.js";var t=e;export{t as component};

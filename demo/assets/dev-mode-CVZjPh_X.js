@@ -1,1 +1,0 @@
-import{n as e}from"./rolldown-runtime-Dd_uD5pT.js";var t=e({isBrowserDevMode:()=>n});function n(){try{return!1}catch{return!1}}export{n,t};

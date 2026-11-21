@@ -1,1 +1,0 @@
-import{t as e}from"./inventory-products-module-B3N4A3mC.js";var t=e;export{t as component};

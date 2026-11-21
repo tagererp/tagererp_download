@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime-DREnUpxT.js";import{t}from"./reports-module-BrU23T_e.js";var n=e(),r=()=>(0,n.jsx)(t,{type:`customers`});export{r as component};

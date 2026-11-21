@@ -1,1 +1,0 @@
-import{n as e}from"./rolldown-runtime-Dd_uD5pT.js";import{d as t,f as n,p as r}from"./storage-Bcq1oCYU.js";var i=e({kvGet:()=>a,kvRemove:()=>s,kvSet:()=>o}),a=e=>t(e),o=(e,t)=>{r(e,t)},s=e=>{n(e)};export{i,s as n,o as r,a as t};

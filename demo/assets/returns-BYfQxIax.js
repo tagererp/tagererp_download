@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime-DREnUpxT.js";import{n as t}from"./purchase-documents-a8Cl9PIm.js";var n=e(),r=()=>(0,n.jsx)(t,{mode:`return`});export{r as component};
