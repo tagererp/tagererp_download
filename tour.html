@@ -1,0 +1,288 @@
+<!doctype html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>جولة تفاعلية — برنامج تاجر المحاسبي</title>
+<meta name="description" content="جولة سريعة بالصور من داخل برنامج تاجر المحاسبي: لوحة التحكم، الفواتير، نقطة البيع، المخزون والتقارير.">
+<link rel="icon" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<script>
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing $set $set_once getPageViewId captureTraceFeedback captureTraceMetric".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  posthog.init('phc_AetVkSrh2uQ2ZbKBPaqChwUgwGnasX6Ay4LdsjKcRZiZ', {
+    api_host: 'https://us.i.posthog.com',
+    person_profiles: 'identified_only',
+    capture_exceptions: true,
+    enable_recording_console_log: true,
+    session_recording: {
+      maskAllInputs: true
+    }
+  });
+</script>
+<style>
+  :root{
+    --orange:#FE501C; --orange-dark:#E23E0E; --orange-soft:#FFF1EA;
+    --ink:#221C15; --muted:#6B655E; --line:#EFE7DE; --bg:#FFF9F4; --card:#fff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Cairo',Tahoma,Arial,sans-serif;background:var(--bg);color:var(--ink);min-height:100vh}
+  a{text-decoration:none}
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(255,249,244,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .topbar-in{max-width:1120px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;gap:14px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1.15rem;color:var(--ink)}
+  .brand img{width:38px;height:38px;border-radius:10px}
+  .brand small{display:block;font-size:.72rem;font-weight:700;color:var(--muted)}
+  .topbar .sp{flex:1}
+  .btn{display:inline-flex;align-items:center;gap:8px;border-radius:12px;padding:10px 18px;font-weight:800;font-size:.95rem;border:2px solid transparent;cursor:pointer;font-family:inherit;transition:.15s}
+  .btn-orange{background:var(--orange);color:#fff}
+  .btn-orange:hover{background:var(--orange-dark)}
+  .btn-ghost{background:#fff;border-color:var(--line);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--orange);color:var(--orange)}
+  .wrap{max-width:1120px;margin:0 auto;padding:26px 18px 60px}
+  .intro{text-align:center;margin-bottom:20px}
+  .intro h1{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:900}
+  .intro h1 .hl{color:var(--orange)}
+  .intro p{color:var(--muted);font-weight:600;margin-top:6px;font-size:clamp(.92rem,2.4vw,1.05rem)}
+  /* مسرح الجولة */
+  .stage{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 24px 50px -24px rgba(120,53,15,.25)}
+  .chrome{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--line);background:#FFFDFB}
+  .dot{width:11px;height:11px;border-radius:50%}
+  .chrome .url{flex:1;text-align:center;background:var(--bg);border:1px solid var(--line);border-radius:8px;color:var(--muted);font-size:.78rem;font-weight:700;padding:3px 10px;max-width:340px;margin:0 auto}
+  .shot{position:relative;line-height:0;background:#F4EFE9}
+  .shot img{width:100%;height:auto;display:block;user-select:none;-webkit-user-drag:none}
+  .shot.swap img{animation:fadein .35s ease}
+  @keyframes fadein{from{opacity:.25}to{opacity:1}}
+  /* النقطة التفاعلية */
+  .hotspot{position:absolute;transform:translate(50%,-50%);width:40px;height:40px;border:0;background:none;cursor:pointer;z-index:5;padding:0}
+  .hotspot .core{position:absolute;inset:11px;background:var(--orange);border:3px solid #fff;border-radius:50%;box-shadow:0 4px 14px rgba(254,80,28,.55);transition:transform .15s}
+  .hotspot .ring{position:absolute;inset:0;border-radius:50%;border:2px solid rgba(254,80,28,.75);animation:ripple 1.6s ease-out infinite}
+  .hotspot .ring2{animation-delay:.8s}
+  @keyframes ripple{from{transform:scale(.45);opacity:1}to{transform:scale(1.15);opacity:0}}
+  .hotspot:hover .core{transform:scale(1.25)}
+  .hotspot .tag{position:absolute;bottom:calc(100% + 2px);right:50%;transform:translateX(50%);background:var(--ink);color:#fff;font-size:.75rem;font-weight:800;padding:4px 10px;border-radius:8px;white-space:nowrap;box-shadow:0 6px 16px rgba(0,0,0,.25)}
+  .hotspot .tag::after{content:"";position:absolute;top:100%;right:50%;transform:translateX(50%);border:6px solid transparent;border-top-color:var(--ink)}
+  .flash{position:absolute;border:3px solid var(--orange);border-radius:14px;box-shadow:0 0 0 6px rgba(254,80,28,.18);pointer-events:none;z-index:4;animation:flashA .45s ease}
+  @keyframes flashA{from{opacity:0;transform:scale(1.12)}to{opacity:1;transform:scale(1)}}
+  /* كارت الشرح والتنقل */
+  .caption{margin-top:16px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 22px;box-shadow:0 14px 34px -22px rgba(120,53,15,.28)}
+  .kicker{color:var(--orange);font-weight:900;font-size:.85rem;margin-bottom:4px}
+  .caption h2{font-size:clamp(1.25rem,3vw,1.6rem);font-weight:900}
+  .caption p{color:var(--muted);font-weight:600;line-height:1.9;margin-top:6px;font-size:clamp(.95rem,2.4vw,1.05rem)}
+  .navrow{display:flex;align-items:center;gap:12px;margin-top:16px;flex-wrap:wrap}
+  .progress{flex:1;min-width:140px;height:9px;background:var(--orange-soft);border-radius:99px;overflow:hidden}
+  .progress i{display:block;height:100%;background:var(--orange);border-radius:99px;transition:width .35s ease}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+  .chip{border:2px solid var(--line);background:#fff;color:var(--muted);font-family:inherit;font-weight:800;font-size:.85rem;border-radius:99px;padding:7px 14px;cursor:pointer;transition:.15s}
+  .chip:hover{border-color:var(--orange);color:var(--orange)}
+  .chip.on{background:var(--orange);border-color:var(--orange);color:#fff}
+  .chip.done{border-color:#FFD9C7;color:var(--orange);background:var(--orange-soft)}
+  /* شاشة الختام */
+  .final{display:none;text-align:center;padding:52px 24px 58px;background:linear-gradient(160deg,#FFF4EC,#fff)}
+  .final.show{display:block}
+  .final h2{font-size:clamp(1.5rem,4vw,2.1rem);font-weight:900}
+  .final p{color:var(--muted);font-weight:600;line-height:1.9;margin:10px auto 24px;max-width:560px}
+  .final .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn-wa{background:#22C55E;color:#fff}
+  .btn-wa:hover{background:#16A34A}
+  .again{margin-top:18px;background:none;border:0;color:var(--muted);font-family:inherit;font-weight:800;cursor:pointer;font-size:.92rem}
+  .again:hover{color:var(--orange)}
+  .hint{text-align:center;color:var(--muted);font-size:.82rem;font-weight:700;margin-top:14px}
+  @media (max-width:640px){
+    .hotspot .tag{display:none}
+    .caption{padding:16px}
+    .topbar .btn{padding:8px 12px;font-size:.85rem}
+    .brand small{display:none}
+  }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="index.html">
+      <img src="img/logo.png" alt="تاجر">
+      <span>تاجر<small>برنامج محاسبي متكامل</small></span>
+    </a>
+    <span class="sp"></span>
+    <a class="btn btn-ghost" href="index.html">الرئيسية</a>
+    <a class="btn btn-orange" href="https://github.com/tagererp/TagerERP_download/releases/download/v1.1.0/Tager.ERP_1.1.0_x64-setup.exe">تحميل البرنامج</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="intro">
+    <h1>جولة سريعة <span class="hl">جوه برنامج تاجر</span></h1>
+    <p>دي لقطات حقيقية من البرنامج نفسه — دوس على العلامة البرتقالية في كل شاشة وامشِ معانا خطوة بخطوة.</p>
+  </div>
+
+  <section class="stage" id="stageBox">
+    <div class="chrome">
+      <span class="dot" style="background:#FF5F57"></span>
+      <span class="dot" style="background:#FEBC2E"></span>
+      <span class="dot" style="background:#28C840"></span>
+      <span class="url">برنامج تاجر — <span id="chromeStep">لوحة التحكم</span></span>
+    </div>
+    <div class="shot" id="shotBox">
+      <img id="shotImg" src="img/dash-hero.jpg" alt="لقطة من برنامج تاجر">
+      <div id="hotLayer"></div>
+    </div>
+    <div class="final" id="finalBox">
+      <h2>دي كانت جولة سريعة… والبرنامج فيه أكتر بكتير</h2>
+      <p>مشتريات ومخازن وتحويلات، حسابات عملاء وموردين، قيود محاسبية وميزانية عمومية، نسخ احتياطي سحابي ومزامنة بين أجهزتك — كل ده في برنامج واحد بيشتغل على جهازك من غير إنترنت.</p>
+      <div class="row">
+        <a class="btn btn-orange" href="https://github.com/tagererp/TagerERP_download/releases/download/v1.1.0/Tager.ERP_1.1.0_x64-setup.exe">تحميل البرنامج الآن</a>
+        <a class="btn btn-wa" href="https://wa.me/201015040274" target="_blank" rel="noopener">كلمنا واتساب</a>
+      </div>
+      <button class="again" id="againBtn" type="button">إعادة الجولة من الأول</button>
+    </div>
+  </section>
+
+  <section class="caption" id="captionBox">
+    <div class="kicker" id="capKicker"></div>
+    <h2 id="capTitle"></h2>
+    <p id="capText"></p>
+    <div class="navrow">
+      <button class="btn btn-ghost" id="prevBtn" type="button">السابق</button>
+      <div class="progress"><i id="progBar"></i></div>
+      <button class="btn btn-orange" id="nextBtn" type="button">التالي</button>
+    </div>
+    <div class="chips" id="chipsBox"></div>
+  </section>
+  <p class="hint">تقدر تتنقل كمان بأسهم الكيبورد، أو تدوس على اسم أي محطة تحت.</p>
+</main>
+
+<script>
+(function(){
+  var steps = [
+    {
+      img: "img/dash-hero.jpg", chip: "لوحة التحكم",
+      title: "لوحة التحكم — كل شغلك في شاشة واحدة",
+      text: "أول ما تفتح البرنامج تلاقي رصيد الخزينة ومبيعات اليوم وصافي ربح الشهر قدامك، ومن غير ما تلف كتير توصل لأي حاجة من الإجراءات السريعة. جرّب تدوس على «فاتورة بيع جديدة».",
+      hotspots: [ { x: 22, y: 48, label: "فاتورة بيع جديدة" } ]
+    },
+    {
+      img: "img/sales-form.jpg", chip: "فاتورة بيع",
+      title: "فاتورة بيع — بتتعمل في ثواني",
+      text: "اختار العميل وحط المنتجات بالبحث أو الباركود، والإجمالي والخصم والصافي المستحق بيتحسبوا لوحدهم. وأول ما تحفظ، المخزون بيقل والقيود المحاسبية بتتكتب تلقائيًا — مفيش ترحيل يدوي. دوس «إضافة بند» وكمل.",
+      hotspots: [ { x: 16, y: 58.5, label: "إضافة بند" } ]
+    },
+    {
+      img: "img/sales-list.jpg", chip: "فواتير المبيعات",
+      title: "فواتيرك — مين دفع ومين لسه عليه",
+      text: "كل الفواتير في قائمة واحدة بحالتها: مدفوعة أو آجلة غير مدفوعة، وبحث فوري برقم الفاتورة أو اسم العميل أو المنتج. ومن «معاينة وطباعة» تطبع القائمة نفسها بقوالب جاهزة وبالمقاس اللي تختاره.",
+      hotspots: [ { x: 94.5, y: 11, label: "معاينة وطباعة" } ]
+    },
+    {
+      img: "img/pos.jpg", chip: "نقطة البيع",
+      title: "نقطة بيع — للكاشير والمحلات",
+      text: "شاشة بيع سريعة بصور المنتجات: دوس على أي منتج يروح للسلة، أو امسح الباركود على طول. و«إتمام البيع» بيطبع الإيصال الحراري ويسمّع في المخزون والخزينة في نفس اللحظة. جرّب تدوس على أي منتج.",
+      hotspots: [ { x: 8, y: 33, label: "دوس على المنتج" } ]
+    },
+    {
+      img: "img/inventory.jpg", chip: "المخزون",
+      title: "المخزون — مظبوط لوحده",
+      text: "كل منتج قدّامك بكميته المتاحة وسعر شراه وسعر بيعه ومخزنه، والبرنامج بينبّهك لما صنف يقرب يخلص أو ينفد. كل حركة بيع وشراء وتحويل بتتخصم وبتتزود تلقائيًا — من غير جرد يدوي كل شوية.",
+      hotspots: [ { x: 54.5, y: 32, label: "كمية كل منتج" } ]
+    },
+    {
+      img: "img/reports.jpg", chip: "التقارير",
+      title: "التقارير — اعرف مكسبك من غير ما تحسب",
+      text: "تقارير فورية من شغلك نفسه: إجمالي المبيعات وصافيها، المرتجعات، أكتر منتجات بتبيع، وأكتر عملاء بيشتروا — لأي فترة تختارها. وفيه كمان تقارير محاسبية كاملة لحد الميزانية العمومية.",
+      hotspots: [ { x: 45.5, y: 39, label: "صافي المبيعات" } ]
+    }
+  ];
+
+  var i = 0, finished = false;
+  var shotBox = document.getElementById('shotBox'),
+      shotImg = document.getElementById('shotImg'),
+      hotLayer = document.getElementById('hotLayer'),
+      finalBox = document.getElementById('finalBox'),
+      captionBox = document.getElementById('captionBox'),
+      capKicker = document.getElementById('capKicker'),
+      capTitle = document.getElementById('capTitle'),
+      capText = document.getElementById('capText'),
+      progBar = document.getElementById('progBar'),
+      prevBtn = document.getElementById('prevBtn'),
+      nextBtn = document.getElementById('nextBtn'),
+      chipsBox = document.getElementById('chipsBox'),
+      chromeStep = document.getElementById('chromeStep');
+
+  steps.forEach(function(s, idx){
+    var c = document.createElement('button');
+    c.type = 'button'; c.className = 'chip'; c.textContent = s.chip;
+    c.addEventListener('click', function(){ go(idx); });
+    chipsBox.appendChild(c);
+  });
+  var chips = chipsBox.children;
+
+  function render(){
+    var s = steps[i];
+    finished = false;
+    finalBox.classList.remove('show');
+    shotBox.style.display = '';
+    captionBox.style.display = '';
+    shotImg.src = s.img;
+    shotImg.alt = 'برنامج تاجر — ' + s.chip;
+    chromeStep.textContent = s.chip;
+    capKicker.textContent = 'المحطة ' + (i + 1) + ' من ' + steps.length;
+    capTitle.textContent = s.title;
+    capText.textContent = s.text;
+    progBar.style.width = ((i + 1) / steps.length * 100) + '%';
+    prevBtn.style.visibility = i === 0 ? 'hidden' : 'visible';
+    nextBtn.textContent = i === steps.length - 1 ? 'إنهاء الجولة' : 'التالي';
+    hotLayer.innerHTML = '';
+    s.hotspots.forEach(function(h){
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'hotspot';
+      b.style.right = h.x + '%'; b.style.top = h.y + '%';
+      b.setAttribute('aria-label', h.label);
+      b.innerHTML = '<span class="ring"></span><span class="ring ring2"></span><span class="core"></span><span class="tag">' + h.label + ' — دوس هنا</span>';
+      b.addEventListener('click', function(){ flash(h); setTimeout(next, 260); });
+      hotLayer.appendChild(b);
+    });
+    for (var k = 0; k < chips.length; k++){
+      chips[k].classList.toggle('on', k === i);
+      chips[k].classList.toggle('done', k < i);
+    }
+    shotBox.classList.remove('swap'); void shotBox.offsetWidth; shotBox.classList.add('swap');
+    var nxt = steps[i + 1];
+    if (nxt){ var pre = new Image(); pre.src = nxt.img; }
+  }
+
+  function flash(h){
+    var f = document.createElement('div');
+    f.className = 'flash';
+    f.style.right = 'calc(' + h.x + '% - 34px)'; f.style.top = 'calc(' + h.y + '% - 34px)';
+    f.style.width = '68px'; f.style.height = '68px';
+    shotBox.appendChild(f);
+    setTimeout(function(){ f.remove(); }, 480);
+  }
+
+  function finish(){
+    finished = true;
+    shotBox.style.display = 'none';
+    captionBox.style.display = 'none';
+    finalBox.classList.add('show');
+    chromeStep.textContent = 'خلصت الجولة';
+    document.getElementById('stageBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function next(){ if (finished) return; if (i >= steps.length - 1) finish(); else { i++; render(); } }
+  function prev(){ if (finished) return; if (i > 0){ i--; render(); } }
+  function go(idx){ i = idx; render(); }
+
+  nextBtn.addEventListener('click', next);
+  prevBtn.addEventListener('click', prev);
+  document.getElementById('againBtn').addEventListener('click', function(){ i = 0; render(); });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowLeft') next();
+    else if (e.key === 'ArrowRight') prev();
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
