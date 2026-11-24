@@ -975,17 +975,6 @@ footer p{font-size:.93rem;line-height:1.8}
 </style>
 
 <style>
-.demo-chooser{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;background:rgba(24,18,14,.55);padding:18px}
-.demo-chooser.open{display:flex}
-.demo-chooser-card{background:#fff;border-radius:20px;max-width:430px;width:100%;padding:28px 24px 22px;text-align:center;box-shadow:0 30px 60px -20px rgba(0,0,0,.35)}
-.demo-chooser-card h3{font-size:1.35rem;font-weight:800;margin:0 0 6px;color:var(--ink)}
-.demo-chooser-card p{color:#6B655E;font-size:.95rem;margin:0 0 20px}
-.demo-chooser-opts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.demo-chooser-opt{display:flex;flex-direction:column;align-items:center;gap:8px;border:2px solid var(--line);border-radius:16px;padding:18px 10px 14px;text-decoration:none;color:var(--ink);font-weight:800;font-size:1.05rem;transition:border-color .15s,background .15s}
-.demo-chooser-opt small{font-weight:600;font-size:.78rem;color:#8A8378}
-.demo-chooser-opt:hover{border-color:var(--orange);background:var(--orange-soft)}
-.demo-chooser-opt svg{color:var(--orange)}
-.demo-chooser-close{margin-top:16px;background:none;border:0;color:#8A8378;font-family:inherit;font-size:.9rem;font-weight:700;cursor:pointer}
 /* ===== عارض النظام: قائمة جانبية زي البرنامج + معرض صور لكل قسم ===== */
 .app-viewer{position:fixed;inset:0;z-index:2100;display:none;align-items:center;justify-content:center;background:rgba(24,18,14,.6);padding:16px}
 .app-viewer.open{display:flex}
@@ -1000,9 +989,7 @@ footer p{font-size:.93rem;line-height:1.8}
 .av-main{flex:1;display:flex;flex-direction:column;min-width:0;background:#fbf9f7}
 .av-top{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid #f0e7de}
 .av-top h3{margin:0;font-size:1.22rem;font-weight:900;color:var(--ink)}
-.av-live{margin-inline-start:auto;background:var(--orange);color:#fff;border:0;font-family:inherit;font-weight:800;font-size:.92rem;padding:10px 16px;border-radius:12px;cursor:pointer}
-.av-live:hover{background:#e8491a}
-.av-close{background:#fff;border:1px solid var(--line);width:38px;height:38px;border-radius:11px;font-size:1.05rem;cursor:pointer;color:var(--ink);line-height:1}
+.av-close{margin-inline-start:auto;background:#fff;border:1px solid var(--line);width:38px;height:38px;border-radius:11px;font-size:1.05rem;cursor:pointer;color:var(--ink);line-height:1}
 .av-stage{flex:1;display:flex;flex-direction:column;padding:16px 18px 8px;min-height:0}
 .av-imgwrap{position:relative;flex:1;min-height:0;background:#f3efe9;border-radius:16px;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .av-imgwrap img{max-width:100%;max-height:100%;object-fit:contain;border-radius:10px;box-shadow:0 12px 32px -12px rgba(60,30,10,.35)}
@@ -1023,22 +1010,9 @@ footer p{font-size:.93rem;line-height:1.8}
   .av-brand span{display:none}
   .av-item{width:auto;white-space:nowrap;padding:8px 11px;font-size:.9rem}
   .av-top h3{font-size:1.05rem}
-  .av-live{font-size:.82rem;padding:8px 11px}
-}
+  }
 
 </style>
-<div class="demo-chooser" id="demoChooser" role="dialog" aria-modal="true" aria-label="اختر طريقة التجربة">
-  <div class="demo-chooser-card">
-    <h3>هتجرّب النظام منين؟</h3>
-    <p>اختار النسخة المناسبة لجهازك</p>
-    <div class="demo-chooser-opts">
-      <a class="demo-chooser-opt" href="demo/?view=phone"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.8h2"/></svg> الهاتف <small>نسخة مناسبة لشاشة هاتفك</small></a>
-      <a class="demo-chooser-opt" href="demo/?view=full"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M9 20.5h6M12 17v3.5"/></svg> الكمبيوتر <small>النسخة الكاملة بكل الإمكانيات</small></a>
-    </div>
-    <button class="demo-chooser-close" id="demoChooserClose" type="button">إلغاء</button>
-  </div>
-</div>
-
 <div class="app-viewer" id="appViewer" role="dialog" aria-modal="true" aria-label="جولة في نظام تاجر">
   <div class="av-frame">
     <nav class="av-side" id="avSide">
@@ -1058,7 +1032,6 @@ footer p{font-size:.93rem;line-height:1.8}
     <div class="av-main">
       <div class="av-top">
         <h3 id="avTitle">لوحة التحكم</h3>
-        <button class="av-live" id="avLive" type="button">تشغيل النسخة التجريبية الحية</button>
         <button class="av-close" id="avClose" type="button" aria-label="إغلاق">✕</button>
       </div>
       <div class="av-stage">
@@ -1076,8 +1049,8 @@ footer p{font-size:.93rem;line-height:1.8}
 </div>
 <script>
 (function(){
-  var btn=document.getElementById('tryDemoBtn'), ch=document.getElementById('demoChooser');
-  if(!btn||!ch) return;
+  var btn=document.getElementById('tryDemoBtn');
+  if(!btn) return;
   btn.addEventListener('click',function(e){e.preventDefault();document.getElementById('appViewer').classList.add('open');});
   /* ===== عارض النظام ===== */
   var AV={
@@ -1111,12 +1084,8 @@ footer p{font-size:.93rem;line-height:1.8}
   document.getElementById('avNext').addEventListener('click',function(){var n=AV[curSec].imgs.length;curIdx=(curIdx+1)%n;avShow();});
   document.getElementById('avClose').addEventListener('click',function(){avEl.classList.remove('open');});
   avEl.addEventListener('click',function(e){if(e.target===avEl)avEl.classList.remove('open');});
-  document.getElementById('avLive').addEventListener('click',function(){avEl.classList.remove('open');ch.classList.add('open');});
   document.addEventListener('keydown',function(e){if(!avEl.classList.contains('open'))return;if(e.key==='Escape')avEl.classList.remove('open');if(e.key==='ArrowLeft')document.getElementById('avNext').click();if(e.key==='ArrowRight')document.getElementById('avPrev').click();});
   avShow();
-  document.getElementById('demoChooserClose').addEventListener('click',function(){ch.classList.remove('open');});
-  ch.addEventListener('click',function(e){if(e.target===ch)ch.classList.remove('open');});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')ch.classList.remove('open');});
 })();
 </script>
 </body>
