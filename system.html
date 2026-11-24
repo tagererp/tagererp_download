@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>جولة في نظام تاجر | TAGER ERP</title>
+<meta name="description" content="جولة بالصور داخل نظام تاجر المحاسبي: لوحة التحكم والمبيعات ونقاط البيع والمشتريات والمخزون والمالية والمحاسبة والتقارير.">
+<link rel="icon" type="image/png" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;--orange:#FE501C;--ink:#191410;--line:#EFE9E2}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Alexandria',system-ui,sans-serif;color:var(--ink);background:#fbf9f7}
+.av-frame{background:#fff;display:flex;overflow:hidden;width:100%}
+.av-side{width:228px;flex:0 0 228px;background:linear-gradient(180deg,#fe501c,#f96a1b 55%,#fb8c1a);color:#fff;display:flex;flex-direction:column;padding:18px 12px;gap:2px;overflow-y:auto}
+.av-brand{display:flex;align-items:center;gap:9px;font-weight:900;font-size:1.12rem;padding:2px 8px 14px}
+.av-brand img{width:32px;height:32px;border-radius:9px;background:#fff;padding:3px}
+.av-item{display:flex;align-items:center;gap:10px;width:100%;background:none;border:0;color:#fff;font-family:inherit;font-size:.98rem;font-weight:700;padding:10px 12px;border-radius:12px;cursor:pointer;text-align:right;transition:background .15s}
+.av-item svg{flex:0 0 auto;opacity:.95}
+.av-item:hover{background:rgba(255,255,255,.14)}
+.av-item.active{background:rgba(255,255,255,.24);box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
+.av-main{flex:1;display:flex;flex-direction:column;min-width:0;background:#fbf9f7}
+.av-top{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid #f0e7de}
+.av-top h3{margin:0;font-size:1.22rem;font-weight:900;color:var(--ink)}
+.av-back{margin-inline-start:auto;text-decoration:none;background:#fff;border:1px solid var(--line);color:var(--ink);font-weight:800;font-size:.9rem;padding:9px 15px;border-radius:11px}
+.av-back:hover{border-color:var(--orange);color:var(--orange)}
+.av-stage{flex:1;display:flex;flex-direction:column;padding:16px 18px 8px;min-height:0}
+.av-imgwrap{position:relative;flex:1;min-height:0;background:#f3efe9;border-radius:16px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.av-imgwrap img{max-width:100%;max-height:100%;object-fit:contain;border-radius:10px;box-shadow:0 12px 32px -12px rgba(60,30,10,.35)}
+.av-arrow{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:1px solid #eee;background:#fff;color:var(--ink);font-size:1.3rem;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.14);display:flex;align-items:center;justify-content:center;z-index:2;font-family:inherit}
+.av-arrow:hover{background:var(--orange);color:#fff;border-color:var(--orange)}
+.av-prev{inset-inline-start:12px}.av-next{inset-inline-end:12px}
+.av-cap{text-align:center;font-weight:800;color:var(--ink);font-size:1rem;margin:12px 0 2px}
+.av-count{text-align:center;color:#8A8378;font-weight:700;font-size:.85rem;margin:0 0 8px}
+.av-thumbs{display:flex;gap:8px;justify-content:center;padding:0 18px 14px;flex-wrap:wrap}
+.av-thumb{width:86px;height:54px;object-fit:cover;border-radius:9px;border:2px solid transparent;cursor:pointer;opacity:.65;transition:opacity .15s,border-color .15s}
+.av-thumb:hover{opacity:.9}
+.av-thumb.active{border-color:var(--orange);opacity:1}
+@media (max-width:760px){
+  .av-frame{flex-direction:column}
+  .av-side{width:100%;flex:0 0 auto;flex-direction:row;align-items:center;overflow-x:auto;overflow-y:hidden;padding:10px}
+  .av-brand{padding:0 4px 0 10px;font-size:1rem}
+  .av-brand span{display:none}
+  .av-item{width:auto;white-space:nowrap;padding:8px 11px;font-size:.9rem}
+  .av-top h3{font-size:1.05rem}
+}
+</style>
+</head>
+<body>
+  <div class="av-frame" style="height:100dvh;max-width:none;border-radius:0;box-shadow:none">
+    <nav class="av-side" id="avSide">
+      <div class="av-brand"><img src="img/logo.png" alt="تاجر"><span>تاجر</span></div>
+      <button class="av-item active" data-sec="dash" type="button"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5"/></svg> لوحة التحكم</button>
+      <button class="av-item" data-sec="sales" type="button"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/><path d="M2.5 3.5h2l2.6 12h10.4l2.2-9.5H6.2"/></svg> المبيعات</button>
+      <button class="av-item" data-sec="pos" type="button"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M9 20.5h6M12 17v3.5"/></svg> نقاط البيع</button>
+      <button class="av-item" data-sec="purch" type="button"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 7h11v10h-11zM13.5 10h4l3.5 3.5V17h-7.5"/><circle cx="6.5" cy="17.5" r="1.7"/><circle cx="17" cy="17.5" r="1.7"/></svg> المشتريات</button>
+      <button class="av-item" data-sec="inv" type="button"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8 21 7.5v9L12 21.2 3 16.5v-9z"/><path d="M3 7.5l9 4.7 9-4.7M12 12.2v9"/></svg> المخزون</button>
+      <button class="av-item" data-sec="fin" type="button"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 4l9 5.5"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3.5 20.5h17"/></svg> المالية</button>
+      <button class="av-item" data-sec="acc" type="button"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3.5H6.5A2.5 2.5 0 0 0 4 6z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg> المحاسبة</button>
+      <button class="av-item" data-sec="rep" type="button"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V4"/><path d="M4 20h16"/><path d="M8.5 16v-5M12.5 16V8M16.5 16v-3"/></svg> التقارير</button>
+      <button class="av-item" data-sec="users" type="button"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M3 20c.6-3.2 2.8-5 6-5s5.4 1.8 6 5"/><path d="M16 5.2a3.5 3.5 0 0 1 0 5.9M18.5 15.4c1.6.7 2.6 2.2 3 4.6"/></svg> المستخدمين</button>
+      <button class="av-item" data-sec="tpl" type="button"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2.8h8L19 8v13.2H6z"/><path d="M13.5 2.8V8.5H19M9 13h6M9 16.5h6"/></svg> القوالب</button>
+      <button class="av-item" data-sec="set" type="button"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M19 12a7 7 0 0 0-.14-1.4l2-1.55-2-3.46-2.36.95A7 7 0 0 0 14.1 5.1L13.75 2.6h-3.5L9.9 5.1a7 7 0 0 0-2.4 1.44l-2.36-.95-2 3.46 2 1.55A7 7 0 0 0 5 12c0 .48.05.94.14 1.4l-2 1.55 2 3.46 2.36-.95c.7.62 1.5 1.1 2.4 1.44l.35 2.5h3.5l.35-2.5a7 7 0 0 0 2.4-1.44l2.36.95 2-3.46-2-1.55c.09-.46.14-.92.14-1.4z"/></svg> الإعدادات</button>
+    </nav>
+    <div class="av-main">
+      <div class="av-top">
+        <h3 id="avTitle">لوحة التحكم</h3>
+        <a class="av-back" href="index.html">رجوع للرئيسية</a>
+      </div>
+      <div class="av-stage">
+        <div class="av-imgwrap">
+          <button class="av-arrow av-prev" id="avPrev" type="button" aria-label="السابق">‹</button>
+          <img id="avImg" src="img/dash.jpg" alt="صورة من نظام تاجر">
+          <button class="av-arrow av-next" id="avNext" type="button" aria-label="التالي">›</button>
+        </div>
+        <p class="av-cap" id="avCap"></p>
+        <p class="av-count" id="avCount"></p>
+      </div>
+      <div class="av-thumbs" id="avThumbs"></div>
+    </div>
+  </div>
+
+<script>
+(function(){
+  var AV={
+    dash:{t:'لوحة التحكم',imgs:[['img/dash.jpg','لوحة التحكم — مؤشرات نشاطك في نظرة واحدة'],['img/dash-hero.jpg','رصيد الخزينة ومقبوضات ومدفوعات اليوم']]},
+    sales:{t:'المبيعات',imgs:[['img/sales-list.jpg','قائمة فواتير البيع'],['img/sales-form.jpg','تحرير فاتورة بيع'],['img/party-profile.jpg','ملف العميل وكشف حسابه']]},
+    pos:{t:'نقاط البيع',imgs:[['img/pos.jpg','شاشة نقطة البيع — بيع سريع بالباركود']]},
+    purch:{t:'المشتريات',imgs:[['img/purch-list.jpg','فواتير الشراء والموردين']]},
+    inv:{t:'المخزون',imgs:[['img/inventory.jpg','الأصناف وكميات المخزون']]},
+    fin:{t:'المالية',imgs:[['img/finance2.jpg','المصروفات'],['img/finance.jpg','التحويلات بين الخزائن والحسابات']]},
+    acc:{t:'المحاسبة',imgs:[['img/journal.jpg','قيود اليومية'],['img/accounts.jpg','شجرة الحسابات']]},
+    rep:{t:'التقارير',imgs:[['img/reports.jpg','تقارير المبيعات والأرباح']]},
+    users:{t:'المستخدمين',imgs:[['img/users.jpg','مستخدمو النظام وصلاحياتهم']]},
+    tpl:{t:'القوالب',imgs:[['img/templates.jpg','قوالب الفواتير والمستندات']]},
+    set:{t:'الإعدادات',imgs:[['img/customize.jpg','تخصيص المظهر والهوية']]}
+  };
+  var avImg=document.getElementById('avImg'), avCap=document.getElementById('avCap'),
+      avCount=document.getElementById('avCount'), avTitle=document.getElementById('avTitle'), avThumbs=document.getElementById('avThumbs'),
+      curSec='dash', curIdx=0;
+  function avShow(){
+    var sec=AV[curSec], im=sec.imgs[curIdx];
+    avTitle.textContent=sec.t; avImg.src=im[0]; avCap.textContent=im[1];
+    avCount.textContent=(curIdx+1)+' / '+sec.imgs.length;
+    document.getElementById('avPrev').style.display=sec.imgs.length>1?'flex':'none';
+    document.getElementById('avNext').style.display=sec.imgs.length>1?'flex':'none';
+    avThumbs.innerHTML='';
+    if(sec.imgs.length>1){sec.imgs.forEach(function(x,i){var t=document.createElement('img');t.src=x[0];t.className='av-thumb'+(i===curIdx?' active':'');t.alt=x[1];t.addEventListener('click',function(){curIdx=i;avShow();});avThumbs.appendChild(t);});}
+    document.querySelectorAll('.av-item').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-sec')===curSec);});
+  }
+  document.querySelectorAll('.av-item').forEach(function(b){b.addEventListener('click',function(){curSec=b.getAttribute('data-sec');curIdx=0;avShow();});});
+  document.getElementById('avPrev').addEventListener('click',function(){var n=AV[curSec].imgs.length;curIdx=(curIdx-1+n)%n;avShow();});
+  document.getElementById('avNext').addEventListener('click',function(){var n=AV[curSec].imgs.length;curIdx=(curIdx+1)%n;avShow();});
+  document.addEventListener('keydown',function(e){if(e.key==='ArrowLeft')document.getElementById('avNext').click();if(e.key==='ArrowRight')document.getElementById('avPrev').click();});
+  avShow();
+})();
+</script>
+
+</body>
+</html>
