@@ -157,7 +157,7 @@ h2{font-size:clamp(1.65rem,3.2vw,2.45rem);font-weight:800;line-height:1.4;letter
 .step .n{width:50px;height:50px;margin:0 auto 13px;border-radius:50%;background:var(--orange);color:#fff;font-weight:800;font-size:1.05rem;display:grid;place-items:center;position:relative;z-index:1;box-shadow:0 10px 22px -10px rgba(254,80,28,.7)}
 .step h3{font-size:.97rem;font-weight:700}
 .step p{font-size:.83rem;color:var(--mut);line-height:1.6}
-/* steps (download / tailscale) */
+/* steps (download) */
 .step-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .step-card{background:none;border:0;overflow:visible}
 .step-card .pad{padding:14px 4px 0}
@@ -625,16 +625,6 @@ footer p{font-size:.93rem;line-height:1.8}
       <figure class="step-card"><div class="shot-window"><div class="win-bar"><i></i><i></i><i></i><em>بدء العمل</em></div><div class="win-body"><img src="img/step3.jpg" alt="بدء العمل في برنامج تاجر" loading="lazy" width="523" height="437"></div></div><figcaption class="pad"><h3>الخطوة 3 — بدء العمل</h3><p>بعد نجاح التفعيل تظهر بطاقة الترخيص الخاصة بك — اضغط «دخول البرنامج» وابدأ العمل.</p></figcaption></figure>
     </div>
 
-    <div class="sec-head center reveal" style="margin-top:76px">
-      <span class="sec-tag">المزامنة</span>
-      <h2>ربط أجهزتك عبر Tailscale</h2>
-      <p class="sec-sub">يتيح لك برنامج Tailscale ربط أجهزة العمل ضمن شبكة خاصة وآمنة، مما يساعدك على الوصول إلى برنامج تاجر المحاسبي على أكثر من جهاز، وفقًا لإعدادات الشبكة والصلاحيات.</p>
-    </div>
-    <div class="step-cards reveal">
-      <figure class="step-card"><div class="shot-window"><div class="win-bar"><i></i><i></i><i></i><em>فتح Tailscale</em></div><div class="win-body"><img src="img/ts1.jpg" alt="فتح Tailscale بجوار الساعة" loading="lazy" width="419" height="386"></div></div><figcaption class="pad"><h3>الخطوة 1</h3><p>من أيقونة Tailscale بجوار الساعة افتح القائمة واضغط «Log in» لبدء تسجيل الدخول.</p></figcaption></figure>
-      <figure class="step-card"><div class="shot-window"><div class="win-bar"><i></i><i></i><i></i><em>تسجيل الدخول إلى Tailscale</em></div><div class="win-body"><img src="img/ts2.jpg" alt="تسجيل الدخول إلى Tailscale" loading="lazy" width="433" height="708"></div></div><figcaption class="pad"><h3>الخطوة 2</h3><p>سجّل الدخول بنفس حساب Tailscale على هذا الجهاز — بالبريد الإلكتروني أو بحساب Google أو Microsoft أو غيرها.</p></figcaption></figure>
-      <figure class="step-card"><div class="shot-window"><div class="win-bar"><i></i><i></i><i></i><em>المزامنة في تاجر</em></div><div class="win-body"><img src="img/ts3.jpg" alt="صفحة المزامنة في تاجر" loading="lazy" width="1180" height="664"></div></div><figcaption class="pad"><h3>الخطوة 3</h3><p>ارجع إلى صفحة «المزامنة» عن بُعد في «تاجر» — ستجد حالة Tailscale «متصل» وعنوان IP الخاص بجهازك ظاهرًا، وبذلك يصبح الجهاز جاهزًا للمزامنة.</p></figcaption></figure>
-    </div>
   </div>
 </section>
 
@@ -706,7 +696,7 @@ footer p{font-size:.93rem;line-height:1.8}
       <div class="faq-item"><button>هل توجد تقارير مالية؟<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a"><p>نعم، يشمل النظام تقارير المبيعات والمشتريات والأرباح والمخزون، وميزان المراجعة وقائمة الدخل والميزانية العمومية، مع طباعة وتصدير إلى Excel.</p></div></div>
       <div class="faq-item"><button>هل يمكن تخصيص الفواتير؟<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a"><p>نعم، توجد قوالب فواتير متعددة قابلة للتخصيص بالشعار وبيانات شركتك وأحجام ورق مختلفة بما فيها الطباعة الحرارية.</p></div></div>
       <div class="faq-item"><button>هل توجد نسخ احتياطية؟<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a"><p>نعم، نسخة احتياطية محلية تتحدث تلقائيًا مع كل تعديل في مجلد تختاره، ونسخة سحابية على Google Drive، مع استعادة آمنة من أيٍّ منهما.</p></div></div>
-      <div class="faq-item"><button>هل يمكن استخدام البرنامج على أكثر من جهاز؟<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a"><p>نعم، يمكن ربط أجهزة محلك ومزامنة البيانات بينها لحظيًا عبر شبكة Tailscale الخاصة والآمنة — حتى لو كانت الأجهزة في أماكن مختلفة.</p></div></div>
+      <div class="faq-item"><button>هل يمكن استخدام البرنامج على أكثر من جهاز؟<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a"><p>نعم، يمكن ربط أجهزة محلك ومزامنة البيانات بينها لحظيًا — حتى لو كانت الأجهزة في أماكن مختلفة.</p></div></div>
       <div class="faq-item"><button>كيف يتم الحصول على ترخيص البرنامج؟<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a"><p>حمّل البرنامج وثبّته، ثم تواصل معنا لاختيار الباقة المناسبة واستلام سيريال التفعيل الخاص بجهازك، وأدخله في شاشة التفعيل لبدء العمل فورًا.</p></div></div>
     </div>
   </div>
